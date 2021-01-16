@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XDM-tw-vBv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="tef-OX-JuH">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="XDM-tw-vBv" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3Mb-kO-KtQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="M4V-or-478" kind="relationship" relationship="rootViewController" id="Yh1-GJ-h2K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTH-4y-Yh9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-277" y="318"/>
+        </scene>
+        <!--Galaxies-->
+        <scene sceneID="5fj-Tr-R8g">
+            <objects>
+                <viewController id="M4V-or-478" customClass="GalaxiesViewController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eWM-zR-1g3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqj-Gq-Zg6">
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-IJ-w5c">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NAk-Hw-AAl">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="leading" secondItem="Pqj-Gq-Zg6" secondAttribute="leading" id="1bd-sh-XNn"/>
+                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="centerX" secondItem="Pqj-Gq-Zg6" secondAttribute="centerX" id="4mp-ZA-JPl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zb7-IJ-w5c" secondAttribute="trailing" id="56u-R1-tsJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zb7-IJ-w5c" secondAttribute="bottom" id="8o8-Eo-QiF"/>
+                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="top" secondItem="Pqj-Gq-Zg6" secondAttribute="top" id="DhG-TQ-DAo"/>
+                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="centerY" secondItem="Pqj-Gq-Zg6" secondAttribute="centerY" id="JLu-QR-vkp"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ZO7-XT-mwu"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="01t-kY-wXC"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wiq-8s-W3x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="leading" secondItem="wiq-8s-W3x" secondAttribute="leading" id="HBt-Ck-CNr"/>
+                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="bottom" secondItem="wiq-8s-W3x" secondAttribute="bottom" id="cbE-3i-FYP"/>
+                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="top" secondItem="wiq-8s-W3x" secondAttribute="top" id="ceb-sA-2XP"/>
+                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="trailing" secondItem="wiq-8s-W3x" secondAttribute="trailing" id="evH-Mq-A7k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Galaxies" id="heF-uT-JZx"/>
+                    <connections>
+                        <outlet property="galaxiesCollectionView" destination="Zb7-IJ-w5c" id="oHP-fI-bJA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qy2-Ab-7kD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="595.6521739130435" y="316.07142857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
