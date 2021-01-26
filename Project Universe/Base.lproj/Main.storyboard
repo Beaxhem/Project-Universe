@@ -27,7 +27,7 @@
         <!--Galaxies-->
         <scene sceneID="5fj-Tr-R8g">
             <objects>
-                <viewController id="M4V-or-478" customClass="GalaxiesViewController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M4V-or-478" customClass="UniverseViewController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWM-zR-1g3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qy2-Ab-7kD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="595.6521739130435" y="316.07142857142856"/>
+        </scene>
+        <!--Galaxy View Controller-->
+        <scene sceneID="nUW-Dm-I7B">
+            <objects>
+                <viewController storyboardIdentifier="GalaxyViewController" id="BRb-av-kDc" customClass="GalaxyViewController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aCD-Lq-7Aq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4U-wb-d8r">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Htg-sp-SrE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t4U-wb-d8r" firstAttribute="centerY" secondItem="aCD-Lq-7Aq" secondAttribute="centerY" id="XLy-1W-9yn"/>
+                            <constraint firstItem="t4U-wb-d8r" firstAttribute="centerX" secondItem="aCD-Lq-7Aq" secondAttribute="centerX" id="n0F-mV-nBd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="testLabel" destination="t4U-wb-d8r" id="EQv-Oy-Dmv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXD-Db-HQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="317"/>
         </scene>
     </scenes>
     <resources>

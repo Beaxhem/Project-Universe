@@ -12,12 +12,18 @@ protocol PlanetarySystem {
     var planets: [Planet]? { get set }
 }
 
-class PlanetarySystemModel: PlanetarySystem {
+class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     
     var star: Star
     var planets: [Planet]?
     
+    var delegate: SpaceObjectDelegate?
+    
     init(star: Star) {
         self.star = star
+    }
+    
+    static func generate() -> PlanetarySystemModel {
+        return PlanetarySystemModel(star: StarModel.generate())
     }
 }

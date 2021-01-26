@@ -11,9 +11,7 @@ class TimeProvider {
     
     static let current = TimeProvider()
     
-    
     func schedule(timeInterval: TimeInterval, completion: @escaping (_ timer: Timer) -> Void) {
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: completion)
     }
-
 }

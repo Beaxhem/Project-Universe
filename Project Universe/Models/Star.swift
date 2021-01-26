@@ -7,11 +7,21 @@
 
 import Foundation
 
-enum StarType {
+protocol Randomizable: CaseIterable {
+    
+}
+
+extension Randomizable {
+    static func random() -> Self {
+        return allCases.randomElement()!
+    }
+}
+
+enum StarType: Randomizable {
     case blackHole
 }
 
-enum StarStage {
+enum StarStage: Randomizable {
     case gasCloud
     case protostar
     case tTauri
@@ -44,5 +54,10 @@ class StarModel: Star {
         self.stage = stage
         self.temperature = temperature
         self.type = type
+    }
+    
+    static func generate() -> StarModel {
+        let hundredRange: ClosedRange<Double> = 1...100
+        return StarModel(radius: .random(in: hundredRange), luminosity: .random(in: hundredRange), type: .random(), stage: .random(), mass: .random(in: hundredRange), temperature: .random(in: hundredRange))
     }
 }
