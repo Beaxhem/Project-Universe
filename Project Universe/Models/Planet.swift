@@ -7,34 +7,50 @@
 
 import Foundation
 
-enum PlanetType {
+enum PlanetType: Randomizable {
     case rocky
     case gasGiant
     case iceGiant
 }
 
 protocol Planet {
-    var type: PlanetType { get }
+    var type: PlanetType { get set }
     var mass: Double { get }
-    var temperature: Double { get }
     var radius: Double { get }
     
-    var satelites: [Planet]? { get }
+    var satelites: [Satelite] { get set }
 }
 
 class PlanetModel: Planet {
     var type: PlanetType
     var mass: Double
-    var temperature: Double
     var radius: Double
     
-    var satelites: [Planet]?
+    var satelites: [Satelite] = []
     
-    init(type: PlanetType, mass: Double, temperature: Double, radius: Double) {
+    init(type: PlanetType, mass: Double, radius: Double) {
         self.type = type
         self.mass = mass
-        self.temperature = temperature
         self.radius = radius
+        
+        generateSatelites()
+    }
+    
+    private func generateSatelites() {
+        let numberOfSatelites: Int = .random(in: 0...5)
+        
+        for _ in 0 ..< numberOfSatelites {
+            let newSatelite = SateliteModel.generate()
+            self.satelites.append(newSatelite)
+        }
+    }
+    
+    static func generate() -> PlanetModel {
+        let hundredRange: ClosedRange<Double> = 0...100
+        return PlanetModel(
+            type: .random(),
+            mass: .random(in: hundredRange),
+            radius: .random(in: hundredRange))
     }
 }
 

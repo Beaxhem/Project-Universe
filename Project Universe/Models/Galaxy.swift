@@ -37,13 +37,17 @@ class GalaxyModel: SpaceObject, Galaxy {
     
     var delegate: SpaceObjectDelegate?
     
+    let nameGenerator = DefaultNameGenerator(with: "Planet system")
+    
     init(type: GalaxyType) {
         self.type = type
     }
     
     func newPlanetarySystem() {
         let newPlanetSystem = PlanetarySystemModel.generate()
+        newPlanetSystem.name = nameGenerator.generate()
         newPlanetSystem.delegate = self
+        
         if planetarySystems != nil {
             planetarySystems?.insert(newPlanetSystem, at: 0)
         } else {

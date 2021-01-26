@@ -14,17 +14,13 @@ protocol PlanetarySystem {
 }
 
 class PlanetarySystemModel: SpaceObject, PlanetarySystem {
-    
-    var name: String
+    var name: String = ""
     var star: Star
     var planets: [Planet]?
-    
-    private let nameGenerator = DefaultNameGenerator(with: "Planet system")
     
     var delegate: SpaceObjectDelegate?
     
     init(star: Star) {
-        self.name = nameGenerator.generate()
         self.star = star
     }
     
