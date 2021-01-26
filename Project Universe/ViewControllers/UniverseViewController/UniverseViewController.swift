@@ -9,7 +9,7 @@ import UIKit
 
 class UniverseViewController: UIViewController, UICollectionViewDelegate {
     private let spacing: CGFloat = 15
-    private let height: CGFloat = 300
+    private let height: CGFloat = 320
     
     @IBOutlet weak var galaxiesCollectionView: UICollectionView?
     
@@ -32,13 +32,15 @@ class UniverseViewController: UIViewController, UICollectionViewDelegate {
         
         galaxiesCollectionView.dataSource = self
         galaxiesCollectionView.delegate = self
-        galaxiesCollectionView.register(GalaxyCollectionViewCell.self, forCellWithReuseIdentifier: GalaxyCollectionViewCell.identifier)
+        galaxiesCollectionView.register(UINib(nibName: "\(GalaxyCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(GalaxyCollectionViewCell.self)")
     }
 }
 
 extension UniverseViewController {
     func galaxiesDidChange() {
-        galaxiesCollectionView?.reloadData()
+        let range = Range(uncheckedBounds: (0, galaxiesCollectionView?.numberOfSections ?? 0))
+        let indexSet = IndexSet(integersIn: range)
+        galaxiesCollectionView?.reloadSections(indexSet)
     }
 }
 
@@ -71,14 +73,13 @@ extension UniverseViewController: UICollectionViewDelegateFlowLayout {
 
 extension UniverseViewController: UICollectionViewDataSource {
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return universe.galaxies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalaxyCollectionViewCell.identifier, for: indexPath) as? GalaxyCollectionViewCell else {
-            return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(GalaxyCollectionViewCell.self)", for: indexPath) as? GalaxyCollectionViewCell else {
+            fatalError()
         }
         
         cell.data = universe.galaxies[indexPath.item]

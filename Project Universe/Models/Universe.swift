@@ -25,8 +25,11 @@ class UniverseModel: SpaceObject, Universe {
     
     var delegate: SpaceObjectDelegate?
     
+    let nameGenerator = DefaultNameGenerator(with: "Galaxy")
+    
     func newGalaxy() {
         let newGalaxy = GalaxyModel.generate()
+        newGalaxy.name = nameGenerator.generate()
         newGalaxy.delegate = self
         galaxies.insert(newGalaxy, at: 0)
     }
@@ -35,13 +38,16 @@ class UniverseModel: SpaceObject, Universe {
 extension UniverseModel: Handled {
     
     func runHandlers() {
+        var needsUpdate = false
+        
         let utilityQueue = DispatchQueue.global(qos: .utility)
         let group = DispatchGroup()
         
         for handler in handlers {
             if handler.isTime(time: time) {
+                needsUpdate = true
                 group.enter()
-                utilityQueue.sync {
+                utilityQueue.async {
                     handler.handle(obj: self)
                     group.leave()
                 }
@@ -58,10 +64,13 @@ extension UniverseModel: Handled {
             }
         }
         
-        group.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            self.delegate?.spaceObjectDidChange(newObj: self)
+        if needsUpdate {
+            group.notify(queue: .main) { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.spaceObjectDidChange(newObj: self)
+            }
         }
+        
     }
 }
 
@@ -75,7 +84,6 @@ extension UniverseModel: SpaceObjectDelegate {
         galaxies = newUniverse.galaxies
         
         delegate?.spaceObjectDidChange(newObj: self)
-        UniverseProvider.shared.galaxiesDidChange?()
     }
 }
 

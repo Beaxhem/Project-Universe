@@ -7,23 +7,21 @@
 
 import Foundation
 
-enum GalaxyType: CaseIterable {
+enum GalaxyType: Randomizable {
     case elliptical
     case spiral
     case irregural
-    
-    static func random() -> GalaxyType? {
-        self.allCases.randomElement()
-    }
 }
 
 protocol Galaxy: SpaceObject {
+    var name: String { get set }
     var type: GalaxyType { get }
     var age: Int { get set }
     var planetarySystems: [PlanetarySystem]? { get set }
 }
 
 class GalaxyModel: SpaceObject, Galaxy {
+    var name: String = ""
     var time: Int = 0 {
         didSet {
             runHandlers()

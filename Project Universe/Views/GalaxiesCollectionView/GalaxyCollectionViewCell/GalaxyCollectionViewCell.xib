@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GalaxyCollectionViewCell" customModule="Project_Universe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="273" height="456"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YqY-Wy-p9n">
+                    <rect key="frame" x="0.0" y="0.0" width="273" height="273"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YqY-Wy-p9n" secondAttribute="height" multiplier="1:1" id="dNm-Ey-Jka"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQd-ne-hbY">
+                    <rect key="frame" x="0.0" y="273" width="273" height="183"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCm-AF-4uG">
+                            <rect key="frame" x="15" y="15" width="243" height="23"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0Y-SP-OOT">
+                            <rect key="frame" x="15" y="53" width="243" height="115"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="cellSecondaryBackgroundView"/>
+                    <constraints>
+                        <constraint firstItem="FCm-AF-4uG" firstAttribute="leading" secondItem="rQd-ne-hbY" secondAttribute="leading" constant="15" id="7dc-i9-fRu"/>
+                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="top" secondItem="FCm-AF-4uG" secondAttribute="bottom" constant="15" id="Aw7-y0-JGg"/>
+                        <constraint firstAttribute="bottom" secondItem="h0Y-SP-OOT" secondAttribute="bottom" constant="15" id="EQH-Gc-Oow"/>
+                        <constraint firstAttribute="trailing" secondItem="FCm-AF-4uG" secondAttribute="trailing" constant="15" id="YB8-P9-D4A"/>
+                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="top" secondItem="FCm-AF-4uG" secondAttribute="bottom" constant="15" id="aGK-cf-S0m"/>
+                        <constraint firstItem="FCm-AF-4uG" firstAttribute="top" secondItem="rQd-ne-hbY" secondAttribute="top" constant="15" id="qia-br-8dQ"/>
+                        <constraint firstAttribute="trailing" secondItem="h0Y-SP-OOT" secondAttribute="trailing" constant="15" id="rKd-dy-4V1"/>
+                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="leading" secondItem="rQd-ne-hbY" secondAttribute="leading" constant="15" id="uma-6O-ez1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="cellBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="YqY-Wy-p9n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5VJ-ay-MYf"/>
+                <constraint firstItem="YqY-Wy-p9n" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7JX-qI-Iur"/>
+                <constraint firstAttribute="trailing" secondItem="rQd-ne-hbY" secondAttribute="trailing" id="CqT-aZ-Hcn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YqY-Wy-p9n" secondAttribute="trailing" id="G2Z-EN-cGd"/>
+                <constraint firstItem="rQd-ne-hbY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gb9-hz-U4V"/>
+                <constraint firstAttribute="bottom" secondItem="rQd-ne-hbY" secondAttribute="bottom" id="Xra-PW-JHX"/>
+                <constraint firstItem="rQd-ne-hbY" firstAttribute="top" secondItem="YqY-Wy-p9n" secondAttribute="bottom" id="yjS-Kf-YrY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="descriptionLabel" destination="h0Y-SP-OOT" id="mgh-39-TJp"/>
+                <outlet property="imageView" destination="YqY-Wy-p9n" id="yME-1i-eoL"/>
+                <outlet property="titleLabel" destination="FCm-AF-4uG" id="bwE-My-2Vj"/>
+            </connections>
+            <point key="canvasLocation" x="-145.6521739130435" y="-83.705357142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="cellBackgroundColor">
+            <color red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cellSecondaryBackgroundView">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

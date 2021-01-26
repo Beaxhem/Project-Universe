@@ -14,7 +14,8 @@ class UniverseProvider {
     
     var galaxiesDidChange: (() -> Void)?
     
-    var timer: DispatchSourceTimer?
+    var timer: TimeProvider = DefaultTimeProvider()
+    
     private var runTime = 0 {
         didSet {
             runHandlers()
@@ -23,20 +24,16 @@ class UniverseProvider {
     
     init(universe: UniverseModel) {
         self.universe = universe
+        universe.delegate = self
         
         setupTimer()
     }
     
     private func setupTimer() {
-        (universe as? UniverseModel)?.delegate = self
-        let t = DispatchSource.makeTimerSource()
-        
-        t.schedule(deadline: .now(), repeating: 1)
-        t.setEventHandler { [weak self] in
+        timer.handler = { [weak self] in
             self?.runTime += 1
         }
-        timer = t
-        timer?.resume()
+        timer.start()
     }
     
     private func runHandlers() {
