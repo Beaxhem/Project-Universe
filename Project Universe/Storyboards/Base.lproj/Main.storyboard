@@ -12,8 +12,8 @@
         <scene sceneID="tef-OX-JuH">
             <objects>
                 <navigationController id="XDM-tw-vBv" customClass="ModifiedNavigationController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3Mb-kO-KtQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Mb-kO-KtQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,43 +32,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqj-Gq-Zg6">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-IJ-w5c">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NAk-Hw-AAl">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="leading" secondItem="Pqj-Gq-Zg6" secondAttribute="leading" id="1bd-sh-XNn"/>
-                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="centerX" secondItem="Pqj-Gq-Zg6" secondAttribute="centerX" id="4mp-ZA-JPl"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zb7-IJ-w5c" secondAttribute="trailing" id="56u-R1-tsJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zb7-IJ-w5c" secondAttribute="bottom" id="8o8-Eo-QiF"/>
-                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="top" secondItem="Pqj-Gq-Zg6" secondAttribute="top" id="DhG-TQ-DAo"/>
-                                    <constraint firstItem="Zb7-IJ-w5c" firstAttribute="centerY" secondItem="Pqj-Gq-Zg6" secondAttribute="centerY" id="JLu-QR-vkp"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="ZO7-XT-mwu"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="01t-kY-wXC"/>
-                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-IJ-w5c">
+                                <rect key="frame" x="0.0" y="10" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NAk-Hw-AAl">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wiq-8s-W3x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="leading" secondItem="wiq-8s-W3x" secondAttribute="leading" id="HBt-Ck-CNr"/>
-                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="bottom" secondItem="wiq-8s-W3x" secondAttribute="bottom" id="cbE-3i-FYP"/>
-                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="top" secondItem="wiq-8s-W3x" secondAttribute="top" id="ceb-sA-2XP"/>
-                            <constraint firstItem="Pqj-Gq-Zg6" firstAttribute="trailing" secondItem="wiq-8s-W3x" secondAttribute="trailing" id="evH-Mq-A7k"/>
+                            <constraint firstItem="wiq-8s-W3x" firstAttribute="bottom" secondItem="Zb7-IJ-w5c" secondAttribute="bottom" id="CAw-Qk-FrY"/>
+                            <constraint firstItem="Zb7-IJ-w5c" firstAttribute="leading" secondItem="wiq-8s-W3x" secondAttribute="leading" id="daM-7J-ZBz"/>
+                            <constraint firstItem="Zb7-IJ-w5c" firstAttribute="trailing" secondItem="wiq-8s-W3x" secondAttribute="trailing" id="fIg-WU-25N"/>
+                            <constraint firstItem="Zb7-IJ-w5c" firstAttribute="top" secondItem="eWM-zR-1g3" secondAttribute="top" constant="10" id="qSO-xB-suN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Galaxies" id="heF-uT-JZx"/>
+                    <navigationItem key="navigationItem" title="Galaxies" largeTitleDisplayMode="never" id="heF-uT-JZx"/>
                     <connections>
                         <outlet property="galaxiesCollectionView" destination="Zb7-IJ-w5c" id="oHP-fI-bJA"/>
                     </connections>

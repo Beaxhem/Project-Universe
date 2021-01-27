@@ -30,8 +30,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0Y-SP-OOT">
-                            <rect key="frame" x="15" y="53" width="243" height="115"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="15" y="43" width="243" height="125"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -39,10 +39,9 @@
                     <color key="backgroundColor" name="cellSecondaryBackgroundView"/>
                     <constraints>
                         <constraint firstItem="FCm-AF-4uG" firstAttribute="leading" secondItem="rQd-ne-hbY" secondAttribute="leading" constant="15" id="7dc-i9-fRu"/>
-                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="top" secondItem="FCm-AF-4uG" secondAttribute="bottom" constant="15" id="Aw7-y0-JGg"/>
+                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="top" secondItem="FCm-AF-4uG" secondAttribute="bottom" constant="5" id="Aw7-y0-JGg"/>
                         <constraint firstAttribute="bottom" secondItem="h0Y-SP-OOT" secondAttribute="bottom" constant="15" id="EQH-Gc-Oow"/>
                         <constraint firstAttribute="trailing" secondItem="FCm-AF-4uG" secondAttribute="trailing" constant="15" id="YB8-P9-D4A"/>
-                        <constraint firstItem="h0Y-SP-OOT" firstAttribute="top" secondItem="FCm-AF-4uG" secondAttribute="bottom" constant="15" id="aGK-cf-S0m"/>
                         <constraint firstItem="FCm-AF-4uG" firstAttribute="top" secondItem="rQd-ne-hbY" secondAttribute="top" constant="15" id="qia-br-8dQ"/>
                         <constraint firstAttribute="trailing" secondItem="h0Y-SP-OOT" secondAttribute="trailing" constant="15" id="rKd-dy-4V1"/>
                         <constraint firstItem="h0Y-SP-OOT" firstAttribute="leading" secondItem="rQd-ne-hbY" secondAttribute="leading" constant="15" id="uma-6O-ez1"/>

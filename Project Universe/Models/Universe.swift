@@ -17,14 +17,13 @@ class UniverseModel: SpaceObject, Universe {
             runHandlers()
         }
     }
-    
     var galaxies: [Galaxy] = []
     let handlers: [Handler] = [
         GalaxyCreatorHandler(),
         GalaxiesCollapseHandler()
     ]
     
-    var delegate: SpaceObjectDelegate?
+    weak var delegate: SpaceObjectDelegate?
     
     let nameGenerator = DefaultNameGenerator(with: "Galaxy")
     

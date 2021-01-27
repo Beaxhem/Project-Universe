@@ -11,12 +11,20 @@ protocol PlanetarySystem {
     var name: String { get set }
     var star: Star { get }
     var planets: [Planet]? { get set }
+    
+    var mass: Double { get }
 }
 
 class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     var name: String = ""
     var star: Star
     var planets: [Planet]?
+    
+    var mass: Double {
+        star.mass + (planets?.reduce(0, { res, planet in
+            return res + planet.mass
+        }) ?? 0)
+    }
     
     var time: Int = 0 {
         didSet {
@@ -28,7 +36,7 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
         PlanetsCreatorHandler()
     ]
     
-    var delegate: SpaceObjectDelegate?
+    weak var delegate: SpaceObjectDelegate?
     
     init(star: Star) {
         self.star = star

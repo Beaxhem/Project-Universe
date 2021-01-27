@@ -67,8 +67,9 @@ class GalaxyCollectionViewCell: UICollectionViewCell {
         
         let description = """
         Num. of PS: \(galaxy.planetarySystems?.count ?? 0)\n\
-        Age: \(galaxy.age)\n\
-        Type: \(galaxy.type)
+        Age: \(galaxy.age) sec.\n\
+        Type: \(galaxy.type)\n\
+        Mass: \(String(format: "%.1f", galaxy.mass))
         """
         
         

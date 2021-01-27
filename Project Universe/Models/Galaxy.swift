@@ -16,8 +16,10 @@ enum GalaxyType: Randomizable {
 protocol Galaxy: SpaceObject {
     var name: String { get set }
     var type: GalaxyType { get }
-    var age: Int { get set }
+    var age: Int { get }
     var planetarySystems: [PlanetarySystem]? { get set }
+    
+    var mass: Double { get }
 }
 
 class GalaxyModel: SpaceObject, Galaxy {
@@ -28,19 +30,33 @@ class GalaxyModel: SpaceObject, Galaxy {
         }
     }
     var type: GalaxyType
-    var age: Int = 0
+    var age: Int {
+        get {
+            self.time - (self.creationTime ?? 0)
+        }
+        set {
+            
+        }
+    }
+    var creationTime: Int?
     var planetarySystems: [PlanetarySystem]?
+    var mass: Double {
+        planetarySystems?.reduce(Double(0), { res, ps in
+            return res + ps.mass
+        }) ?? 0
+    }
     
     var handlers: [Handler] = [
         PlanetarySystemCreatorHandler()
     ]
     
-    var delegate: SpaceObjectDelegate?
+    weak var delegate: SpaceObjectDelegate?
     
     let nameGenerator = DefaultNameGenerator(with: "Planet system")
     
     init(type: GalaxyType) {
         self.type = type
+        self.creationTime = UniverseProvider.shared.runTime
     }
     
     func newPlanetarySystem() {
@@ -105,6 +121,16 @@ extension GalaxyModel: SpaceObjectDelegate {
         self.planetarySystems = newGalaxy.planetarySystems
         
         delegate?.spaceObjectDidChange(newObj: self)
+    }
+}
+
+extension GalaxyModel: Equatable {
+    static func == (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
+        if lhs.type == rhs.type, lhs.age == rhs.age, lhs.name == rhs.name {
+            return true
+        }
+        
+        return false
     }
     
     

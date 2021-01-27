@@ -50,9 +50,8 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
         
         let description = """
         Num. of planets: \(planetSystem.planets?.count ?? 0)\n\
-        Mass: \(planetSystem.star.mass)
+        Mass: \(String(format: "%.1f", planetSystem.mass) )\n
         """
-        
         
         return description
     }

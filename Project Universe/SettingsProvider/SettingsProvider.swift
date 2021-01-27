@@ -8,11 +8,5 @@
 class SettingsProvider {
     static let shared = SettingsProvider()
     
-    var timeAcceleration: Int = 1 {
-        didSet {
-            if timeAcceleration < 1 {
-                timeAcceleration = 1
-            }
-        }
-    }
+    var timeAcceleration: Int = 2
 }

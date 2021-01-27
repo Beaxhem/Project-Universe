@@ -23,7 +23,8 @@ class DefaultTimeProvider: TimeProvider {
     
     init() {
         let t = DispatchSource.makeTimerSource()
-        t.schedule(deadline: .now(), repeating: 1)
+        let timeInterval = Double(1) / Double(SettingsProvider.shared.timeAcceleration)
+        t.schedule(deadline: .now(), repeating: timeInterval)
         timer = t
     }
     

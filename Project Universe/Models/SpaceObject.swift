@@ -5,7 +5,7 @@
 //  Created by Ilya Senchukov on 26.01.2021.
 //
 
-protocol SpaceObjectDelegate {
+protocol SpaceObjectDelegate: AnyObject {
     func spaceObjectDidChange(newObj: SpaceObject)
 }
 

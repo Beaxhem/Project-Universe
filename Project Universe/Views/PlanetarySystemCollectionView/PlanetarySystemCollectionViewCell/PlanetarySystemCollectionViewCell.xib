@@ -29,9 +29,9 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF2-zb-vaR">
-                            <rect key="frame" x="15" y="53" width="242" height="156"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zF2-zb-vaR">
+                            <rect key="frame" x="15" y="43" width="242" height="166"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -43,7 +43,7 @@
                         <constraint firstAttribute="bottom" secondItem="zF2-zb-vaR" secondAttribute="bottom" constant="15" id="LGk-PS-8BP"/>
                         <constraint firstItem="ilq-cQ-Phs" firstAttribute="top" secondItem="EFM-iW-5j8" secondAttribute="top" constant="15" id="Ld8-hY-SIf"/>
                         <constraint firstAttribute="trailing" secondItem="ilq-cQ-Phs" secondAttribute="trailing" constant="15" id="XGz-b9-VnQ"/>
-                        <constraint firstItem="zF2-zb-vaR" firstAttribute="top" secondItem="ilq-cQ-Phs" secondAttribute="bottom" constant="15" id="pUY-sB-UUB"/>
+                        <constraint firstItem="zF2-zb-vaR" firstAttribute="top" secondItem="ilq-cQ-Phs" secondAttribute="bottom" constant="5" id="pUY-sB-UUB"/>
                         <constraint firstAttribute="trailing" secondItem="zF2-zb-vaR" secondAttribute="trailing" constant="15" id="pyb-7X-4F9"/>
                     </constraints>
                 </view>

@@ -14,7 +14,8 @@ class TimerBarButton: UIView {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        label.frame = CGRect(x: 0, y: 0, width: 80, height: 34)
         label.text = "0"
         label.textAlignment = .center
         label.layer.cornerRadius = 17
@@ -51,6 +52,11 @@ class TimerBarButton: UIView {
     }
     
     func reload(time: Int) {
-        timeLabel.text = "\(time)"
+        let minutes = time / 60
+        let seconds = time % 60
+        
+        let pattern = "\(minutes < 10 ? "0\(minutes)" : "\(minutes)"):\(seconds < 10 ? "0\(seconds)" : "\(seconds)")"
+        
+        timeLabel.text = pattern
     }
 }
