@@ -32,19 +32,20 @@ class GalaxiesCollapseHandler: Handler {
         }
         
         let oldGalaxies = allGalaxies.filter { galaxy -> Bool in
-            galaxy.age > 3*60
+            galaxy.age > 3
         }
+        
+        guard oldGalaxies.count > 1 else { return }
         
         var shuffledOldGalaxies = oldGalaxies.shuffled()
         
         guard let galaxyOne = shuffledOldGalaxies.popLast(), let galaxyTwo = shuffledOldGalaxies.popLast() else {
             return
         }
-        
-        allGalaxies = allGalaxies.filter({ galaxy -> Bool in
-            return galaxy != galaxyOne || galaxy != galaxyTwo
+        allGalaxies = allGalaxies.filter({ galaxy in
+            return galaxy !== galaxyOne || galaxy !== galaxyTwo
         })
-        
+    
         var newGalaxy: GalaxyModel
         
         if galaxyOne.mass > galaxyTwo.mass {

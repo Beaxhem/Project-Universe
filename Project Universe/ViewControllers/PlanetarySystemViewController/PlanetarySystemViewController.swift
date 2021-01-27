@@ -35,6 +35,11 @@ class PlanetarySystemViewController: UIViewController {
 
 extension PlanetarySystemViewController {
     func onUpdate() {
+        var s = self
+        if (isKnownUniquelyReferenced(&s)) {
+            print("Unique")
+        }
+        
         let range = Range(uncheckedBounds: (0, planetsCollectionView?.numberOfSections ?? 0))
         let indexSet = IndexSet(integersIn: range)
         planetsCollectionView?.reloadSections(indexSet)

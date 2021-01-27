@@ -42,7 +42,6 @@ extension UniverseModel: Handled {
         
         let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
             
-//        let queue = DispatchQueue.global(qos: .utility)
         let group = DispatchGroup()
         
         for handler in handlers {

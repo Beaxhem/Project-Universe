@@ -28,6 +28,7 @@
 		8818AB3625C137E1003F3AED /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3525C137E1003F3AED /* Randomizable.swift */; };
 		8818AB3A25C13D3A003F3AED /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3925C13D3A003F3AED /* UIImageView.swift */; };
 		8818AB3D25C13D87003F3AED /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3C25C13D87003F3AED /* UIColor.swift */; };
+		8818AB4025C1A0CF003F3AED /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3F25C1A0CF003F3AED /* Collection.swift */; };
 		8831974725C03C9E0042B3E6 /* GalaxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974625C03C9E0042B3E6 /* GalaxyViewController.swift */; };
 		8831974D25C03F250042B3E6 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974C25C03F250042B3E6 /* Handler.swift */; };
 		8831975025C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974F25C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift */; };
@@ -71,6 +72,7 @@
 		8818AB3525C137E1003F3AED /* Randomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randomizable.swift; sourceTree = "<group>"; };
 		8818AB3925C13D3A003F3AED /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		8818AB3C25C13D87003F3AED /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		8818AB3F25C1A0CF003F3AED /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		8831974625C03C9E0042B3E6 /* GalaxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyViewController.swift; sourceTree = "<group>"; };
 		8831974C25C03F250042B3E6 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		8831974F25C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetarySystemsCreatorHandler.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				8818AB3925C13D3A003F3AED /* UIImageView.swift */,
 				8818AB3C25C13D87003F3AED /* UIColor.swift */,
+				8818AB3F25C1A0CF003F3AED /* Collection.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				8818AB3D25C13D87003F3AED /* UIColor.swift in Sources */,
 				8831975325C0457F0042B3E6 /* GalaxyCreatorHandler.swift in Sources */,
 				8818AB1425C0F118003F3AED /* StarCollectionHeaderView.swift in Sources */,
+				8818AB4025C1A0CF003F3AED /* Collection.swift in Sources */,
 				8831975925C04FE70042B3E6 /* UniverseProvider.swift in Sources */,
 				8812F02E25C099C900DDE6EA /* ImageProvider.swift in Sources */,
 				8818AB2E25C110A3003F3AED /* GalaxiesCollapseHandler.swift in Sources */,

@@ -41,6 +41,11 @@ class GalaxyViewController: UIViewController {
 
 extension GalaxyViewController {
     func universeUpdate() {
+        var s = self
+        if (isKnownUniquelyReferenced(&s)) {
+            print("Unique")
+        }
+        
         let range = Range(uncheckedBounds: (0, planetarySystemsCollectionView?.numberOfSections ?? 0))
         let indexSet = IndexSet(integersIn: range)
         planetarySystemsCollectionView?.reloadSections(indexSet)

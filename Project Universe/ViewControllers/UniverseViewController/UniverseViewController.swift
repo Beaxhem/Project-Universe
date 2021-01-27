@@ -43,6 +43,11 @@ class UniverseViewController: UIViewController, UICollectionViewDelegate {
 
 extension UniverseViewController {
     func galaxiesDidChange() {
+        var s = self
+        if (isKnownUniquelyReferenced(&s)) {
+            print("Unique")
+        }
+        
         let range = Range(uncheckedBounds: (0, galaxiesCollectionView?.numberOfSections ?? 0))
         let indexSet = IndexSet(integersIn: range)
         galaxiesCollectionView?.reloadSections(indexSet)

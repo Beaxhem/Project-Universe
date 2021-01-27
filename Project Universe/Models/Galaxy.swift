@@ -105,10 +105,7 @@ extension GalaxyModel: Handled {
         
         guard let planetarySystems = planetarySystems else { return }
         for system in planetarySystems {
-            
-//            queue.async { [weak self] in
             (system as? PlanetarySystemModel)?.time = self.time
-//            }
         }
     }
 }
@@ -126,12 +123,10 @@ extension GalaxyModel: SpaceObjectDelegate {
 
 extension GalaxyModel: Equatable {
     static func == (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
-        if lhs.type == rhs.type, lhs.age == rhs.age, lhs.name == rhs.name {
-            return true
-        }
-        
-        return false
+        return lhs.type == rhs.type && lhs.age == rhs.age && lhs.name == rhs.name && lhs.creationTime == rhs.creationTime
     }
     
-    
+    static func != (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
+        return lhs.type != rhs.type && lhs.age != rhs.age && lhs.name != rhs.name && lhs.creationTime != rhs.creationTime
+    }
 }
