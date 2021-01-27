@@ -12,10 +12,12 @@ class GalaxyCreatorHandler: Handler {
         }
         
         universe.newGalaxy()
+        
+//        print("New galaxy created")
     }
     
     func isTime(time: Int) -> Bool {
-        return time % 10 == 0
+        return time % 2 == 0
     }
     
     

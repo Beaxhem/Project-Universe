@@ -11,16 +11,24 @@ class PlanetsCreatorHandler: Handler {
             return
         }
         
-        var planets = planetSystem.planets ?? []
         let newPlanet = PlanetModel.generate()
         
-        planets.insert(newPlanet, at: 0)
+        var planets: [Planet]? = planetSystem.planets
+        if planets != nil {
+            if planets!.count < 9 {
+                planets?.insert(newPlanet, at: 0)
+            }
+        } else {
+            planets = [newPlanet]
+        }
         
         planetSystem.planets = planets
+        
+//        print("New planet created")
     }
     
     func isTime(time: Int) -> Bool {
-        return time % 10 == 0
+        return time % 2 == 0
     }
     
     

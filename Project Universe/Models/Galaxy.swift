@@ -31,7 +31,7 @@ class GalaxyModel: SpaceObject, Galaxy {
     var age: Int = 0
     var planetarySystems: [PlanetarySystem]?
     
-    let handlers: [Handler] = [
+    var handlers: [Handler] = [
         PlanetarySystemCreatorHandler()
     ]
     
@@ -62,13 +62,16 @@ class GalaxyModel: SpaceObject, Galaxy {
 
 extension GalaxyModel: Handled {
     func runHandlers() {
-        let utilityQueue = DispatchQueue.global(qos: .utility)
+        var needsUpdate = false
+        let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
         let group = DispatchGroup()
         
         for handler in handlers {
             if handler.isTime(time: time) {
+                needsUpdate = true
+                
                 group.enter()
-                utilityQueue.sync {
+                queue.sync {
                     handler.handle(obj: self)
                     group.leave()
                 }
@@ -76,10 +79,20 @@ extension GalaxyModel: Handled {
         }
         
         group.notify(queue: .main) { [weak self] in
-            guard let self = self else {
-                return
+            if needsUpdate {
+                guard let self = self else {
+                    return
+                }
+                self.delegate?.spaceObjectDidChange(newObj: self)
             }
-            self.delegate?.spaceObjectDidChange(newObj: self)
+        }
+        
+        guard let planetarySystems = planetarySystems else { return }
+        for system in planetarySystems {
+            
+//            queue.async { [weak self] in
+            (system as? PlanetarySystemModel)?.time = self.time
+//            }
         }
     }
 }
@@ -87,7 +100,11 @@ extension GalaxyModel: Handled {
 extension GalaxyModel: SpaceObjectDelegate {
     // Planetary systems did change
     func spaceObjectDidChange(newObj: SpaceObject) {
+        guard let newGalaxy = newObj as? GalaxyModel else { return }
         
+        self.planetarySystems = newGalaxy.planetarySystems
+        
+        delegate?.spaceObjectDidChange(newObj: self)
     }
     
     

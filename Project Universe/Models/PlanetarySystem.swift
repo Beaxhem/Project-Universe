@@ -18,6 +18,16 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     var star: Star
     var planets: [Planet]?
     
+    var time: Int = 0 {
+        didSet {
+            runHandlers()
+        }
+    }
+    
+    let handlers: [Handler] = [
+        PlanetsCreatorHandler()
+    ]
+    
     var delegate: SpaceObjectDelegate?
     
     init(star: Star) {
@@ -26,5 +36,33 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     
     static func generate() -> PlanetarySystemModel {
         return PlanetarySystemModel(star: StarModel.generate())
+    }
+}
+
+extension PlanetarySystemModel: Handled {
+    func runHandlers() {
+        var needsUpdate = false
+        let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
+        let group = DispatchGroup()
+        
+        for handler in handlers {
+            if handler.isTime(time: time) {
+                needsUpdate = true
+                
+                group.enter()
+                queue.async {
+                    handler.handle(obj: self)
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            if needsUpdate {
+                guard let self = self else { return }
+                
+                self.delegate?.spaceObjectDidChange(newObj: self)
+            }
+        }
     }
 }

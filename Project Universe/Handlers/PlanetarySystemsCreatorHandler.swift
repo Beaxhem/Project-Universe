@@ -12,10 +12,11 @@ class PlanetarySystemCreatorHandler: Handler {
         }
         
         galaxy.newPlanetarySystem()
+//        print("New planetary system created")
     }
     
     func isTime(time: Int) -> Bool {
-        return time % 10 == 0
+        return time % 2 == 0
     }
     
     

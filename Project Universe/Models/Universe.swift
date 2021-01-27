@@ -40,14 +40,16 @@ extension UniverseModel: Handled {
     func runHandlers() {
         var needsUpdate = false
         
-        let utilityQueue = DispatchQueue.global(qos: .utility)
+        let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
+            
+//        let queue = DispatchQueue.global(qos: .utility)
         let group = DispatchGroup()
         
         for handler in handlers {
             if handler.isTime(time: time) {
                 needsUpdate = true
                 group.enter()
-                utilityQueue.async {
+                queue.sync {
                     handler.handle(obj: self)
                     group.leave()
                 }
@@ -59,14 +61,14 @@ extension UniverseModel: Handled {
                 return
             }
             
-            utilityQueue.async { [weak self] in
-                galaxy.time = self?.time ?? 0
-            }
+            galaxy.time = self.time
         }
         
-        if needsUpdate {
-            group.notify(queue: .main) { [weak self] in
+       
+        group.notify(queue: .main) { [weak self] in
+            if needsUpdate {
                 guard let self = self else { return }
+                
                 self.delegate?.spaceObjectDidChange(newObj: self)
             }
         }
@@ -80,7 +82,6 @@ extension UniverseModel: SpaceObjectDelegate {
         guard let newUniverse = newObj as? UniverseModel else {
             return
         }
-        
         galaxies = newUniverse.galaxies
         
         delegate?.spaceObjectDidChange(newObj: self)

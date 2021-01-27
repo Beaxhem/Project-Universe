@@ -15,24 +15,12 @@ class GalaxyViewController: UIViewController {
     
     var imageProvider: ImageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
     
-    var galaxy: Galaxy? {
-        didSet {
-            configure()
-        }
-    }
+    var galaxy: Galaxy?
     
     override func viewDidLoad() {
-        configure()
-        
         UniverseProvider.shared.galaxiesDidChange = universeUpdate
     
         setupCollectionView()
-    }
-    
-    private func configure() {
-//        guard let galaxy = galaxy else {
-//            return
-//        }
     }
     
     private func setupCollectionView() {

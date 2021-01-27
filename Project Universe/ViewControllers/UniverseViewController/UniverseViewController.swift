@@ -23,7 +23,9 @@ class UniverseViewController: UIViewController, UICollectionViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         galaxiesDidChange()
+        
         UniverseProvider.shared.galaxiesDidChange = galaxiesDidChange
     }
     
