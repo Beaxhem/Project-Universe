@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Modified Navigation Controller-->
         <scene sceneID="tef-OX-JuH">
             <objects>
-                <navigationController id="XDM-tw-vBv" sceneMemberID="viewController">
+                <navigationController id="XDM-tw-vBv" customClass="ModifiedNavigationController" customModule="Project_Universe" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3Mb-kO-KtQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -144,6 +144,7 @@
                             <constraint firstItem="Htg-sp-SrE" firstAttribute="bottom" secondItem="M02-Sk-oo6" secondAttribute="bottom" id="ohb-da-8sC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Gjx-nv-hXU"/>
                     <connections>
                         <outlet property="planetarySystemsCollectionView" destination="M02-Sk-oo6" id="wPA-sP-fkE"/>
                     </connections>
@@ -219,6 +220,9 @@
                             <constraint firstItem="XP3-gh-SeS" firstAttribute="top" secondItem="DXM-fh-Xwh" secondAttribute="top" id="ike-AI-uFj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1fq-jD-Rk8">
+                        <barButtonItem key="backBarButtonItem" title="Systems" id="ip0-YR-GBo"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="planetsCollectionView" destination="XP3-gh-SeS" id="Vft-Hh-Ge0"/>
                     </connections>

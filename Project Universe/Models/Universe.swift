@@ -20,7 +20,8 @@ class UniverseModel: SpaceObject, Universe {
     
     var galaxies: [Galaxy] = []
     let handlers: [Handler] = [
-        GalaxyCreatorHandler()
+        GalaxyCreatorHandler(),
+        GalaxiesCollapseHandler()
     ]
     
     var delegate: SpaceObjectDelegate?

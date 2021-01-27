@@ -17,6 +17,9 @@ class PlanetarySystemViewController: UIViewController {
     var planetarySystem: PlanetarySystem?
     
     override func viewDidLoad() {
+        let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
+        navigationItem.rightBarButtonItem = timerButton
+        
         setupCollectionView()
     }
     

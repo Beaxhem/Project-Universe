@@ -25,7 +25,6 @@ class DefaultTimeProvider: TimeProvider {
         let t = DispatchSource.makeTimerSource()
         t.schedule(deadline: .now(), repeating: 1)
         timer = t
-        
     }
     
     func start() {

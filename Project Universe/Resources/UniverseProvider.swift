@@ -16,8 +16,12 @@ class UniverseProvider {
     
     var timer: TimeProvider = DefaultTimeProvider()
     
-    private var runTime = 0 {
+    var runTime = 0 {
         didSet {
+            DispatchQueue.main.async { [weak self] in
+                TimerBarButton.shared.reload(time: self?.runTime ?? 0)
+            }
+            
             runHandlers()
         }
     }
@@ -31,7 +35,7 @@ class UniverseProvider {
     
     private func setupTimer() {
         timer.handler = { [weak self] in
-            self?.runTime += 1
+            self?.runTime += 1 * SettingsProvider.shared.timeAcceleration
         }
         timer.start()
     }

@@ -6,6 +6,12 @@
 //
 
 protocol Handler {
+    var timeInterval: Int { get set }
     func handle(obj: SpaceObject)
-    func isTime(time: Int) -> Bool
+}
+
+extension Handler {
+    func isTime(time: Int) -> Bool {
+        return time % timeInterval == 0
+    }
 }

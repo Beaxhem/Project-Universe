@@ -20,6 +20,9 @@ class GalaxyViewController: UIViewController {
     override func viewDidLoad() {
         UniverseProvider.shared.galaxiesDidChange = universeUpdate
     
+        let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
+        navigationItem.rightBarButtonItem = timerButton
+        
         setupCollectionView()
     }
     
