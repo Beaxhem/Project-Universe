@@ -6,6 +6,12 @@
 //
 
 class PlanetarySystemCreatorHandler: Handler {
+    let settingsProvider = SettingsProvider.shared
+    
+    lazy var timeInterval: Int = {
+        return 10 / settingsProvider.timeAcceleration
+    }()
+    
     func handle(obj: SpaceObject) {
         guard let galaxy = obj as? GalaxyModel else {
             return
@@ -16,7 +22,7 @@ class PlanetarySystemCreatorHandler: Handler {
     }
     
     func isTime(time: Int) -> Bool {
-        return time % 2 == 0
+        return time % timeInterval == 0
     }
     
     

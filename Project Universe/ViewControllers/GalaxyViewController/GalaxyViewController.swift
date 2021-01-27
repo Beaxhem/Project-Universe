@@ -88,4 +88,17 @@ extension GalaxyViewController: UICollectionViewDelegateFlowLayout {
         spacing
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let planetarySystem = galaxy?.planetarySystems?[indexPath.item] else {
+            return
+        }
+        
+        guard let vc = storyboard?.instantiateViewController(identifier: "\(PlanetarySystemViewController.self)") as? PlanetarySystemViewController else {
+            return
+        }
+        
+        vc.planetarySystem = planetarySystem
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
