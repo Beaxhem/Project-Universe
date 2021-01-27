@@ -7,12 +7,24 @@
 
 
 protocol State {
-    associatedtype Enum
-    var state: Enum { get set }
-    var next: Enum? { get set }
+    typealias Value = Any
+    var value: Value { get set }
+    var next: State? { get set }
 }
 
-//protocol StateMachine {
-//    var currentState: State? { get set }
-//    func next()
-//}
+protocol StateMachine {
+    var currentState: State? { get set }
+}
+
+
+class DefaultStateMachine: StateMachine {
+    var currentState: State?
+    
+    init(state: State) {
+        self.currentState = state
+    }
+    
+    func next() {
+        currentState = currentState?.next
+    }
+}

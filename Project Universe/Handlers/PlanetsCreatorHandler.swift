@@ -14,6 +14,7 @@ class PlanetsCreatorHandler: Handler {
         }
         
         let newPlanet = PlanetModel.generate()
+        newPlanet.name = planetSystem.nameGenerator.generate()
         
         var planets: [Planet]? = planetSystem.planets
         if planets != nil {

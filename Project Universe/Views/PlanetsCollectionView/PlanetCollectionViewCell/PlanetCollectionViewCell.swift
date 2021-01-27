@@ -21,7 +21,22 @@ class PlanetCollectionViewCell: UICollectionViewCell {
     
     private func configure() {
         guard let planet = data else { return }
-        titleLabel?.text = "\(planet.type)"
-        descriptionLabel?.text = "\(planet.satelites.count)"
+        titleLabel?.text = "\(planet.name)"
+        descriptionLabel?.text = getDescription()
+    }
+    
+    private func getDescription() -> String? {
+        guard let planet = data else {
+            return nil
+        }
+        
+        let description = """
+        Num. of satelites: \(planet.satelites.count)\n\
+        Mass: \(String(format: "%.1f", planet.mass))\n\
+        Radius: \(String(format: "%.1f", planet.radius))\n\
+        Type: \(planet.type.rawValue)
+        """
+        
+        return description
     }
 }

@@ -20,6 +20,8 @@ class PlanetarySystemViewController: UIViewController {
         let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
         navigationItem.rightBarButtonItem = timerButton
         
+        UniverseProvider.shared.galaxiesDidChange = onUpdate
+        
         setupCollectionView()
     }
     
@@ -28,6 +30,14 @@ class PlanetarySystemViewController: UIViewController {
         planetsCollectionView.delegate = self
         planetsCollectionView.dataSource = self
         planetsCollectionView.register(UINib(nibName: "\(PlanetCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(PlanetCollectionViewCell.self)")
+    }
+}
+
+extension PlanetarySystemViewController {
+    func onUpdate() {
+        let range = Range(uncheckedBounds: (0, planetsCollectionView?.numberOfSections ?? 0))
+        let indexSet = IndexSet(integersIn: range)
+        planetsCollectionView?.reloadSections(indexSet)
     }
 }
 

@@ -17,11 +17,11 @@ class StarCollectionHeaderView: UICollectionReusableView {
         }
     }
     
-    let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
+    let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.starImageDict)
     
     private func configure() {
         guard let data = data else { return }
         
-//        galaxyImage?.image = imageProvider.name(for: data.type)
-        titleLabel?.text = "\(data.stage)"
+        galaxyImage?.image = imageProvider.name(for: data.stage)
+        titleLabel?.text = "\(data.stage.rawValue)"
     }}

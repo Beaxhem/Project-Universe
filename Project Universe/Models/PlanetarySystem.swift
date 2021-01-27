@@ -32,6 +32,8 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
         }
     }
     
+    let nameGenerator = DefaultNameGenerator(with: "Planet")
+    
     let handlers: [Handler] = [
         PlanetsCreatorHandler()
     ]

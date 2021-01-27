@@ -12,7 +12,7 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
     
-    private let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
+    private let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.starImageDict)
     
     var data: PlanetarySystem? {
         didSet {
@@ -37,8 +37,9 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
             return
         }
         
+        let image = imageProvider.name(for: data.star.stage)
+        imageView?.image = image
         
-//        imageView?.image = image
         titleLabel?.text = data.name
         descriptionLabel?.text = getDescription()
     }

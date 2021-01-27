@@ -5,8 +5,9 @@
 //  Created by Ilya Senchukov on 27.01.2021.
 //
 
-func arrayOfCommonElements <T, U> (lhs: T, rhs: U) -> [T.Element] where T: Sequence, U: Sequence, T.Element: Equatable, T.Element == U.Element {
-    var returnArray:[T.Element] = []
+func arrayOfCommonElements<T, U>(lhs: T, rhs: U) -> [T.Element] where T: Sequence, U: Sequence, T.Element: Equatable, T.Element == U.Element {
+    var returnArray: [T.Element] = []
+    
     for lhsItem in lhs {
         for rhsItem in rhs {
             if lhsItem == rhsItem {
@@ -14,6 +15,7 @@ func arrayOfCommonElements <T, U> (lhs: T, rhs: U) -> [T.Element] where T: Seque
             }
         }
     }
+    
     return returnArray
 }
 
@@ -64,43 +66,5 @@ class GalaxiesCollapseHandler: Handler {
         allGalaxies.insert(newGalaxy, at: 0)
         
         universe.galaxies = allGalaxies
-        
-//        guard var allGalaxies = universe.galaxies as? [GalaxyModel] else {
-//            return
-//        }
-//
-//        var galaxies = allGalaxies.filter { (galaxy) -> Bool in
-//            galaxy.age > 3*60
-//        }
-//        guard galaxies.count >= 2 else {
-//            return
-//        }
-//        var shuffledGalaxies = galaxies.shuffled()
-//
-//        guard let galaxyOne = shuffledGalaxies.popLast(), let galaxyTwo = shuffledGalaxies.popLast() else {
-//            return
-//        }
-//
-//        galaxies = arrayOfCommonElements(lhs: galaxies, rhs: shuffledGalaxies)
-//
-//        var newGalaxy: GalaxyModel
-//        if galaxyOne.mass > galaxyTwo.mass {
-//            newGalaxy = GalaxyModel(type: galaxyOne.type)
-//            newGalaxy.age = galaxyOne.age
-//        } else {
-//            newGalaxy = GalaxyModel(type: galaxyTwo.type)
-//            newGalaxy.age = galaxyTwo.age
-//        }
-//
-//        newGalaxy.name = universe.nameGenerator.generate()
-//
-//        let systemsOne = galaxyOne.planetarySystems ?? []
-//        let systemsTwo = galaxyTwo.planetarySystems ?? []
-//        let allSystems = systemsOne + systemsTwo
-//        newGalaxy.planetarySystems = Array(allSystems.prefix(Int(Double(allSystems.count) * 0.9)))
-//        allGalaxies = arrayOfCommonElements(lhs: allGalaxies, rhs: galaxies)
-//        allGalaxies.insert(newGalaxy, at: 0)
-//
-//        universe.galaxies = allGalaxies
     }
 }

@@ -43,23 +43,6 @@ class GalaxyCollectionViewCell: UICollectionViewCell {
         descriptionLabel?.text = getDescription()
     }
     
-    private func selectImage(type: GalaxyType) -> String {
-        var imageName: String
-        
-        switch type {
-        case .elliptical:
-            imageName = "ellipticalGalaxy"
-        case .irregural:
-            imageName = "irregularGalaxy"
-        case .spiral:
-            imageName = "spiralGalaxy"
-        default:
-            imageName = "unknownGalaxyType"
-        }
-        
-        return imageName
-    }
-    
     private func getDescription() -> String? {
         guard let galaxy = data else {
             return nil

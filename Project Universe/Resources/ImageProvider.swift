@@ -35,4 +35,11 @@ extension DefaultImageProvider {
         "default": "unknownGalaxyType"
     ]
     
+    static let starImageDict: [AnyHashable: String] = [
+//        StarStage.oldStar: "oldStarImage",
+//        StarStage.youngStar: "youngStarImage",
+//        StarStage.dwarf: "dwarfStarImage",
+        StarStage.blackHole: "blackHoleImage",
+        "default": "youngStarImage"
+    ]
 }

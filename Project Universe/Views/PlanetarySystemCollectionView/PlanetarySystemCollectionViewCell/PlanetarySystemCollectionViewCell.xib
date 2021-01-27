@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="272" height="496"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-fu-aF8">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youngStarImage" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-fu-aF8">
                     <rect key="frame" x="0.0" y="0.0" width="272" height="272"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ojM-fu-aF8" secondAttribute="height" multiplier="1:1" id="2wU-5b-iCy"/>
@@ -74,6 +74,7 @@
         </view>
     </objects>
     <resources>
+        <image name="youngStarImage" width="768" height="768"/>
         <namedColor name="cellBackgroundColor">
             <color red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

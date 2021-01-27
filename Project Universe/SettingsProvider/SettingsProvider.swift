@@ -8,5 +8,5 @@
 class SettingsProvider {
     static let shared = SettingsProvider()
     
-    var timeAcceleration: Int = 2
+    var timeAcceleration: Int = 1
 }

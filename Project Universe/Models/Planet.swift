@@ -7,13 +7,14 @@
 
 import Foundation
 
-enum PlanetType: Randomizable {
-    case rocky
-    case gasGiant
-    case iceGiant
+enum PlanetType: String, Randomizable {
+    case rocky = "Rocky"
+    case gasGiant = "Gas giant"
+    case iceGiant = "Ice giant"
 }
 
 protocol Planet {
+    var name: String { get set }
     var type: PlanetType { get set }
     var mass: Double { get }
     var radius: Double { get }
@@ -22,6 +23,7 @@ protocol Planet {
 }
 
 class PlanetModel: Planet {
+    var name: String = ""
     var type: PlanetType
     var mass: Double
     var radius: Double
