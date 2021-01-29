@@ -22,6 +22,6 @@ class StarCollectionHeaderView: UICollectionReusableView {
     private func configure() {
         guard let data = data else { return }
         
-        galaxyImage?.image = imageProvider.name(for: data.stage)
-        titleLabel?.text = "\(data.stage.rawValue)"
+        galaxyImage?.image = imageProvider.name(for: data.stage.currentState?.value as! StarStage)
+        titleLabel?.text = "\((data.stage.currentState!.value as? StarStage)?.rawValue ?? "")"
     }}

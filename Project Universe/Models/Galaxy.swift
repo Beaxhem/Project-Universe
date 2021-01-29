@@ -51,7 +51,6 @@ class GalaxyModel: SpaceObject, Galaxy {
         PlanetarySystemCreatorHandler()
     ]
     
-    var onDeinit: (() -> Void)?
     weak var delegate: SpaceObjectDelegate?
     
     let nameGenerator = DefaultNameGenerator(with: "Planet system")
@@ -75,10 +74,6 @@ class GalaxyModel: SpaceObject, Galaxy {
     
     static func generate() -> GalaxyModel {
         return GalaxyModel(type: GalaxyType.allCases.randomElement()!)
-    }
-    
-    deinit {
-        onDeinit?()
     }
 }
 
@@ -126,13 +121,3 @@ extension GalaxyModel: SpaceObjectDelegate {
         delegate?.spaceObjectDidChange(newObj: self)
     }
 }
-
-//extension GalaxyModel: Equatable {
-//    static func == (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
-//        return lhs.type == rhs.type && lhs.age == rhs.age && lhs.name == rhs.name && lhs.creationTime == rhs.creationTime
-//    }
-//    
-//    static func != (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
-//        return lhs.type != rhs.type && lhs.age != rhs.age && lhs.name != rhs.name && lhs.creationTime != rhs.creationTime
-//    }
-//}

@@ -8,25 +8,29 @@
 import Foundation
 
 class YoungStarState: State {
-
-    var value: Value = "Young star"
+    var value: Value = StarStage.youngStar
     var next: State? = OldStarState()
-    
 }
 
 class OldStarState: State {
-    var value: Value = "Old star"
+    var value: Value = StarStage.oldStar
     
-    var next: State? = FinalStarState()
+    var next: State? = drand48() > 0.5 ? BlackHoleState() : DwarfStarState()
 }
 
-class FinalStarState: State {
-    var value: Value = ""
+class DwarfStarState: State {
+    var value: Value = StarStage.dwarf
     
     var next: State? = nil
 }
 
-enum StarStage: String, Randomizable {
+class BlackHoleState: State {
+    var value: Value = StarStage.blackHole
+    
+    var next: State? = nil
+}
+
+enum StarStage: String {
     case youngStar = "Young star"
     case oldStar = "Old star"
     case dwarf = "Dwarf"
@@ -34,32 +38,44 @@ enum StarStage: String, Randomizable {
 }
 
 protocol Star {
-    var stage: StarStage { get }
     var mass: Double { get }
     var temperature: Double { get }
     var radius: Double { get }
     var luminosity: Double { get }
+    
+    var stage: StateMachine { get set }
 }
 
 class StarModel: Star {
+    var time: Int = 0
+    var age: Int {
+        get {
+            self.time - (self.creationTime ?? 0)
+        }
+        set { }
+    }
+    var creationTime: Int?
+    
     var radius: Double
     var luminosity: Double
-    var stage: StarStage
     var mass: Double
     var temperature: Double
     
-    var stateMachine = DefaultStateMachine(state: YoungStarState())
+    var stage: StateMachine = DefaultStateMachine(state: YoungStarState())
     
-    init(radius: Double, luminosity: Double, stage: StarStage, mass: Double, temperature: Double) {
+    init(radius: Double, luminosity: Double, mass: Double, temperature: Double) {
         self.luminosity = luminosity
         self.mass = mass
         self.radius = radius
-        self.stage = stage
         self.temperature = temperature
     }
     
     static func generate() -> StarModel {
         let hundredRange: ClosedRange<Double> = 1...100
-        return StarModel(radius: .random(in: hundredRange), luminosity: .random(in: hundredRange), stage: .random(), mass: .random(in: hundredRange), temperature: .random(in: hundredRange))
+        return StarModel(
+            radius: .random(in: hundredRange),
+            luminosity: .random(in: hundredRange),
+            mass: .random(in: hundredRange),
+            temperature: .random(in: hundredRange))
     }
 }

@@ -13,6 +13,11 @@ class PlanetsCreatorHandler: Handler {
             return
         }
         
+        if planetSystem.star.stage.currentState is BlackHoleState {
+            planetSystem.planets = []
+            return
+        }
+        
         let newPlanet = PlanetModel.generate()
         newPlanet.name = planetSystem.nameGenerator.generate()
         

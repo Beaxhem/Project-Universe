@@ -12,6 +12,18 @@ class TimerBarButton: UIView {
     
     let timeProvider = UniverseProvider.shared
     
+    var isSpeedUp: Bool = false {
+        didSet {
+            if isSpeedUp {
+                SettingsProvider.shared.timeAcceleration = 2
+            } else {
+                SettingsProvider.shared.timeAcceleration = 1
+            }
+            
+            configure()
+        }
+    }
+    
     let timeLabel: UILabel = {
         let label = UILabel()
         
@@ -43,12 +55,24 @@ class TimerBarButton: UIView {
         
         addSubview(timeLabel)
         
+        timeLabel.backgroundColor = isSpeedUp ? .systemBlue : .clear
+        timeLabel.textColor = isSpeedUp ? .clear : .systemBlue
+        
         NSLayoutConstraint.activate([
             timeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             timeLabel.topAnchor.constraint(equalTo: topAnchor),
             timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+    
+    @objc func changeTimeSpeed() {
+        print("He")
+        if SettingsProvider.shared.timeAcceleration == 1 {
+            SettingsProvider.shared.timeAcceleration = 2
+        } else {
+            SettingsProvider.shared.timeAcceleration = 1
+        }
     }
     
     func reload(time: Int) {

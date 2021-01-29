@@ -5,8 +5,19 @@
 //  Created by Ilya Senchukov on 27.01.2021.
 //
 
+protocol SettingsProviderDelegate: AnyObject {
+    func timeAccelerationChanged()
+}
+
 class SettingsProvider {
+    
     static let shared = SettingsProvider()
     
-    var timeAcceleration: Int = 2
+    weak var delegate: SettingsProviderDelegate?
+        
+    var timeAcceleration: Int = 2 {
+        didSet {
+            delegate?.timeAccelerationChanged()
+        }
+    }
 }

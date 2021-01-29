@@ -14,6 +14,8 @@ class UniverseProvider {
     
     var galaxiesDidChange: (() -> Void)?
     
+    var settingsProvider = SettingsProvider.shared
+    
     var timer: TimeProvider = DefaultTimeProvider()
     
     var runTime = 0 {
@@ -35,7 +37,7 @@ class UniverseProvider {
     
     private func setupTimer() {
         timer.handler = { [weak self] in
-            self?.runTime += 1 * SettingsProvider.shared.timeAcceleration
+            self?.runTime += 1 * (self?.settingsProvider.timeAcceleration ?? 1)
         }
         timer.start()
     }

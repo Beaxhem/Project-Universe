@@ -37,7 +37,7 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        let image = imageProvider.name(for: data.star.stage)
+        let image = imageProvider.name(for: data.star.stage.currentState?.value as? StarStage)
         imageView?.image = image
         
         titleLabel?.text = data.name

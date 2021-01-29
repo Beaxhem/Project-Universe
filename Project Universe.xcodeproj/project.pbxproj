@@ -48,6 +48,7 @@
 		88C32CF725B243F300DD1AA5 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF625B243F300DD1AA5 /* Star.swift */; };
 		88C32CFA25B243FD00DD1AA5 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF925B243FD00DD1AA5 /* Planet.swift */; };
 		88C32D0825B2619C00DD1AA5 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32D0725B2619C00DD1AA5 /* Timer.swift */; };
+		88FA95C225C3E4A10049C854 /* StarEvolutionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FA95C125C3E4A10049C854 /* StarEvolutionHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		88C32CF625B243F300DD1AA5 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		88C32CF925B243FD00DD1AA5 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		88C32D0725B2619C00DD1AA5 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		88FA95C125C3E4A10049C854 /* StarEvolutionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarEvolutionHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				8831975225C0457F0042B3E6 /* GalaxyCreatorHandler.swift */,
 				8818AB0525C0D265003F3AED /* PlanetsCreatorHandler.swift */,
 				8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */,
+				88FA95C125C3E4A10049C854 /* StarEvolutionHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				8812F05025C0B07000DDE6EA /* PlanetarySystemCollectionViewCell.swift in Sources */,
 				885A6C0925B1D4C000BEEFBF /* SceneDelegate.swift in Sources */,
 				8818AB1925C0F16A003F3AED /* PlanetCollectionViewCell.swift in Sources */,
+				88FA95C225C3E4A10049C854 /* StarEvolutionHandler.swift in Sources */,
 				8818AB3225C11B82003F3AED /* StateMachine.swift in Sources */,
 				8818AB3D25C13D87003F3AED /* UIColor.swift in Sources */,
 				8831975325C0457F0042B3E6 /* GalaxyCreatorHandler.swift in Sources */,

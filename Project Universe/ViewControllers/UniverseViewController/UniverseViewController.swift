@@ -19,6 +19,7 @@ class UniverseViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         
         let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
+        
         navigationItem.rightBarButtonItem = timerButton
         
         setUpGalaxiesCollectionView()

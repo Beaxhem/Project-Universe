@@ -35,7 +35,8 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     let nameGenerator = DefaultNameGenerator(with: "Planet")
     
     let handlers: [Handler] = [
-        PlanetsCreatorHandler()
+        PlanetsCreatorHandler(),
+        StarEvolutionHandler()
     ]
     
     weak var delegate: SpaceObjectDelegate?
@@ -60,12 +61,14 @@ extension PlanetarySystemModel: Handled {
                 needsUpdate = true
                 
                 group.enter()
-                queue.async {
+                queue.sync {
                     handler.handle(obj: self)
                     group.leave()
                 }
             }
         }
+        
+        (star as? StarModel)?.time = time
         
         group.notify(queue: .main) { [weak self] in
             if needsUpdate {
@@ -74,5 +77,7 @@ extension PlanetarySystemModel: Handled {
                 self.delegate?.spaceObjectDidChange(newObj: self)
             }
         }
+        
+        
     }
 }

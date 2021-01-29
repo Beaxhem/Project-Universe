@@ -15,16 +15,24 @@ class GalaxyViewController: UIViewController {
     
     var imageProvider: ImageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
     
-    var index: Int?
     var galaxy: Galaxy?
     
     override func viewDidLoad() {
         UniverseProvider.shared.galaxiesDidChange = universeUpdate
     
         let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
+        
         navigationItem.rightBarButtonItem = timerButton
         
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        universeUpdate()
+        
+        UniverseProvider.shared.galaxiesDidChange = universeUpdate
     }
     
     private func setupCollectionView() {
