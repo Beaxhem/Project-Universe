@@ -12,6 +12,7 @@ protocol Universe {
 }
 
 class UniverseModel: SpaceObject, Universe {
+    
     var time: Int = 0 {
         didSet {
             runHandlers()

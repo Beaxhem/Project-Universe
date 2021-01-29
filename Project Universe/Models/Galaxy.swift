@@ -5,7 +5,7 @@
 //  Created by Ilya Senchukov on 15.01.2021.
 //
 
-import Foundation
+import UIKit
 
 enum GalaxyType: Randomizable {
     case elliptical
@@ -23,6 +23,7 @@ protocol Galaxy: SpaceObject {
 }
 
 class GalaxyModel: SpaceObject, Galaxy {
+    var test: ((GalaxyModel) -> Void)?
     var name: String = ""
     var time: Int = 0 {
         didSet {
@@ -50,6 +51,7 @@ class GalaxyModel: SpaceObject, Galaxy {
         PlanetarySystemCreatorHandler()
     ]
     
+    var onDeinit: (() -> Void)?
     weak var delegate: SpaceObjectDelegate?
     
     let nameGenerator = DefaultNameGenerator(with: "Planet system")
@@ -73,6 +75,10 @@ class GalaxyModel: SpaceObject, Galaxy {
     
     static func generate() -> GalaxyModel {
         return GalaxyModel(type: GalaxyType.allCases.randomElement()!)
+    }
+    
+    deinit {
+        onDeinit?()
     }
 }
 
@@ -121,12 +127,12 @@ extension GalaxyModel: SpaceObjectDelegate {
     }
 }
 
-extension GalaxyModel: Equatable {
-    static func == (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
-        return lhs.type == rhs.type && lhs.age == rhs.age && lhs.name == rhs.name && lhs.creationTime == rhs.creationTime
-    }
-    
-    static func != (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
-        return lhs.type != rhs.type && lhs.age != rhs.age && lhs.name != rhs.name && lhs.creationTime != rhs.creationTime
-    }
-}
+//extension GalaxyModel: Equatable {
+//    static func == (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
+//        return lhs.type == rhs.type && lhs.age == rhs.age && lhs.name == rhs.name && lhs.creationTime == rhs.creationTime
+//    }
+//    
+//    static func != (lhs: GalaxyModel, rhs: GalaxyModel) -> Bool {
+//        return lhs.type != rhs.type && lhs.age != rhs.age && lhs.name != rhs.name && lhs.creationTime != rhs.creationTime
+//    }
+//}
