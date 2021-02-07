@@ -31,5 +31,4 @@ class DefaultTimeProvider: TimeProvider {
     func start() {
         timer?.resume()
     }
-    
 }

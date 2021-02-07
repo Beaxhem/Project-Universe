@@ -16,7 +16,6 @@ protocol StateMachine {
     var currentState: State? { get set }
 }
 
-
 class DefaultStateMachine: StateMachine {
     var currentState: State?
     

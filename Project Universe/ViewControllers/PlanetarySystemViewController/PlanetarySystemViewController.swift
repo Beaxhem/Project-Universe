@@ -7,18 +7,14 @@
 
 import UIKit
 
-class PlanetarySystemViewController: UIViewController {
-    
-    private let spacing: CGFloat = 15
-    private let height: CGFloat = 320
+class PlanetarySystemViewController: SpaceObjectViewController {
     
     @IBOutlet weak var planetsCollectionView: UICollectionView?
 
     var planetarySystem: PlanetarySystem?
     
     override func viewDidLoad() {
-        let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
-        navigationItem.rightBarButtonItem = timerButton
+        super.viewDidLoad()
         
         UniverseProvider.shared.galaxiesDidChange = onUpdate
         
@@ -41,6 +37,7 @@ extension PlanetarySystemViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension PlanetarySystemViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return planetarySystem?.planets?.count ?? 0
@@ -70,32 +67,4 @@ extension PlanetarySystemViewController: UICollectionViewDataSource {
 
         return UICollectionReusableView()
     }
-}
-
-extension PlanetarySystemViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width / 2 - spacing * 3 / 2, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        spacing
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let planetarySystem = plane[indexPath.item] else {
-//            return
-//        }
-//        
-//        guard let vc = storyboard?.instantiateViewController(identifier: "\(PlanetarySystemViewController.self)") as? PlanetarySystemViewController else {
-//            return
-//        }
-//        
-//        vc.planetarySystem = planetarySystem
-//        
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
 }

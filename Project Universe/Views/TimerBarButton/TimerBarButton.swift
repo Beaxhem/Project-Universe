@@ -67,7 +67,6 @@ class TimerBarButton: UIView {
     }
     
     @objc func changeTimeSpeed() {
-        print("He")
         if SettingsProvider.shared.timeAcceleration == 1 {
             SettingsProvider.shared.timeAcceleration = 2
         } else {

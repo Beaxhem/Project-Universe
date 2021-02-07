@@ -21,7 +21,6 @@
 		8818AB1925C0F16A003F3AED /* PlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB1825C0F16A003F3AED /* PlanetCollectionViewCell.swift */; };
 		8818AB1C25C0F19D003F3AED /* PlanetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8818AB1B25C0F19D003F3AED /* PlanetCollectionViewCell.xib */; };
 		8818AB2025C0F257003F3AED /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB1F25C0F257003F3AED /* SettingsProvider.swift */; };
-		8818AB2625C10456003F3AED /* ModifiedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB2525C10456003F3AED /* ModifiedNavigationController.swift */; };
 		8818AB2B25C10821003F3AED /* TimerBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB2A25C10821003F3AED /* TimerBarButton.swift */; };
 		8818AB2E25C110A3003F3AED /* GalaxiesCollapseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */; };
 		8818AB3225C11B82003F3AED /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3125C11B82003F3AED /* StateMachine.swift */; };
@@ -39,6 +38,7 @@
 		885A6C0E25B1D4C000BEEFBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885A6C0C25B1D4C000BEEFBF /* Main.storyboard */; };
 		885A6C1025B1D4C400BEEFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885A6C0F25B1D4C400BEEFBF /* Assets.xcassets */; };
 		885A6C1325B1D4C400BEEFBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885A6C1125B1D4C400BEEFBF /* LaunchScreen.storyboard */; };
+		8890886525D0700A000F6993 /* SpaceObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8890886425D0700A000F6993 /* SpaceObjectViewController.swift */; };
 		88C32CEE25B240DF00DD1AA5 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CED25B240DF00DD1AA5 /* Universe.swift */; };
 		88C32CF125B243DD00DD1AA5 /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF025B243DD00DD1AA5 /* Galaxy.swift */; };
 		88C32CF425B243E700DD1AA5 /* PlanetarySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF325B243E700DD1AA5 /* PlanetarySystem.swift */; };
@@ -63,7 +63,6 @@
 		8818AB1825C0F16A003F3AED /* PlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetCollectionViewCell.swift; sourceTree = "<group>"; };
 		8818AB1B25C0F19D003F3AED /* PlanetCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanetCollectionViewCell.xib; sourceTree = "<group>"; };
 		8818AB1F25C0F257003F3AED /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
-		8818AB2525C10456003F3AED /* ModifiedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedNavigationController.swift; sourceTree = "<group>"; };
 		8818AB2A25C10821003F3AED /* TimerBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBarButton.swift; sourceTree = "<group>"; };
 		8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxiesCollapseHandler.swift; sourceTree = "<group>"; };
 		8818AB3125C11B82003F3AED /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		885A6C0F25B1D4C400BEEFBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		885A6C1225B1D4C400BEEFBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		885A6C1425B1D4C400BEEFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8890886425D0700A000F6993 /* SpaceObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceObjectViewController.swift; sourceTree = "<group>"; };
 		88C32CED25B240DF00DD1AA5 /* Universe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
 		88C32CF025B243DD00DD1AA5 /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		88C32CF325B243E700DD1AA5 /* PlanetarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetarySystem.swift; sourceTree = "<group>"; };
@@ -178,14 +178,6 @@
 				8818AB1F25C0F257003F3AED /* SettingsProvider.swift */,
 			);
 			path = SettingsProvider;
-			sourceTree = "<group>";
-		};
-		8818AB2425C10448003F3AED /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				8818AB2525C10456003F3AED /* ModifiedNavigationController.swift */,
-			);
-			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		8818AB2925C10810003F3AED /* TimerBarButton */ = {
@@ -299,7 +291,7 @@
 		885A6C1B25B1D59100BEEFBF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8818AB2425C10448003F3AED /* NavigationController */,
+				8890886325D06F69000F6993 /* SpaceObjectViewController */,
 				8818AB0C25C0F093003F3AED /* PlanetarySystemViewController */,
 				8831974525C03C8E0042B3E6 /* GalaxyViewController */,
 				8831974425C03C860042B3E6 /* UniverseViewController */,
@@ -332,6 +324,14 @@
 				8818AB3525C137E1003F3AED /* Randomizable.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8890886325D06F69000F6993 /* SpaceObjectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8890886425D0700A000F6993 /* SpaceObjectViewController.swift */,
+			);
+			path = SpaceObjectViewController;
 			sourceTree = "<group>";
 		};
 		88C32CE825B23FC300DD1AA5 /* GalaxiesCollectionView */ = {
@@ -434,7 +434,6 @@
 				8818AB2025C0F257003F3AED /* SettingsProvider.swift in Sources */,
 				8831974725C03C9E0042B3E6 /* GalaxyViewController.swift in Sources */,
 				88C32D0825B2619C00DD1AA5 /* Timer.swift in Sources */,
-				8818AB2625C10456003F3AED /* ModifiedNavigationController.swift in Sources */,
 				88C32CFA25B243FD00DD1AA5 /* Planet.swift in Sources */,
 				8818AB0E25C0F0A0003F3AED /* PlanetarySystemViewController.swift in Sources */,
 				8831974D25C03F250042B3E6 /* Handler.swift in Sources */,
@@ -442,6 +441,7 @@
 				8831975D25C085590042B3E6 /* SpaceObject.swift in Sources */,
 				8831975025C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift in Sources */,
 				885A6C0725B1D4C000BEEFBF /* AppDelegate.swift in Sources */,
+				8890886525D0700A000F6993 /* SpaceObjectViewController.swift in Sources */,
 				8812F05025C0B07000DDE6EA /* PlanetarySystemCollectionViewCell.swift in Sources */,
 				885A6C0925B1D4C000BEEFBF /* SceneDelegate.swift in Sources */,
 				8818AB1925C0F16A003F3AED /* PlanetCollectionViewCell.swift in Sources */,
