@@ -15,7 +15,27 @@ protocol PlanetarySystem {
     var mass: Double { get }
 }
 
-class PlanetarySystemModel: SpaceObject, PlanetarySystem {
+class PlanetarySystemModel: TimeHandled, PlanetarySystem {
+    
+    // MARK: TimeHandled conformation
+    override var handlers: [Handler]? {
+        get {
+            [
+                PlanetsCreatorHandler(),
+                StarEvolutionHandler()
+            ]
+        }
+        set {}
+    }
+    
+    override var children: [TimeHandled]? {
+        get {
+            planets as? [TimeHandled]
+        }
+        set{}
+    }
+    
+    // MARK: PlanetarySystem protocol conformation
     var name: String = ""
     var star: Star
     var planets: [Planet]?
@@ -26,20 +46,7 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
         }) ?? 0)
     }
     
-    var time: Int = 0 {
-        didSet {
-            runHandlers()
-        }
-    }
-    
     let nameGenerator = DefaultNameGenerator(with: "Planet")
-    
-    let handlers: [Handler] = [
-        PlanetsCreatorHandler(),
-        StarEvolutionHandler()
-    ]
-    
-    weak var delegate: SpaceObjectDelegate?
     
     init(star: Star) {
         self.star = star
@@ -48,13 +55,14 @@ class PlanetarySystemModel: SpaceObject, PlanetarySystem {
     static func generate() -> PlanetarySystemModel {
         return PlanetarySystemModel(star: StarModel.generate())
     }
-}
-
-extension PlanetarySystemModel: Handled {
-    func runHandlers() {
+    
+    // Overriding method from TimeHandled because of extra star property, which needs to be updated
+    override func runHandlers() {
         var needsUpdate = false
         let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
         let group = DispatchGroup()
+        
+        guard let handlers = handlers else { return }
         
         for handler in handlers {
             if handler.isTime(time: time) {
@@ -77,7 +85,5 @@ extension PlanetarySystemModel: Handled {
                 self.delegate?.spaceObjectDidChange(newObj: self)
             }
         }
-        
-        
     }
 }

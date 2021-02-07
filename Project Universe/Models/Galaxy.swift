@@ -22,15 +22,30 @@ protocol Galaxy: SpaceObject {
     var mass: Double { get }
 }
 
-class GalaxyModel: SpaceObject, Galaxy {
-    var test: ((GalaxyModel) -> Void)?
-    var name: String = ""
-    var time: Int = 0 {
-        didSet {
-            runHandlers()
+class GalaxyModel: TimeHandled, Galaxy {
+    
+    // MARK: TimeHandled conformation
+    override var children: [TimeHandled]? {
+        get {
+            return planetarySystems as? [TimeHandled]
         }
+        set {}
     }
+    
+    override var handlers: [Handler]? {
+        get {
+            return [
+                PlanetarySystemCreatorHandler()
+            ]
+        }
+        set {}
+    }
+    
+    // MARK: Galaxy protocol conformation
+    
+    var name: String = ""
     var type: GalaxyType
+    var planetarySystems: [PlanetarySystem]?
     var age: Int {
         get {
             self.time - (self.creationTime ?? 0)
@@ -39,19 +54,13 @@ class GalaxyModel: SpaceObject, Galaxy {
             
         }
     }
+    
     var creationTime: Int?
-    var planetarySystems: [PlanetarySystem]?
     var mass: Double {
         planetarySystems?.reduce(Double(0), { res, ps in
             return res + ps.mass
         }) ?? 0
     }
-    
-    var handlers: [Handler] = [
-        PlanetarySystemCreatorHandler()
-    ]
-    
-    weak var delegate: SpaceObjectDelegate?
     
     let nameGenerator = DefaultNameGenerator(with: "Planet system")
     
@@ -77,40 +86,7 @@ class GalaxyModel: SpaceObject, Galaxy {
     }
 }
 
-extension GalaxyModel: Handled {
-    func runHandlers() {
-        var needsUpdate = false
-        let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
-        let group = DispatchGroup()
-        
-        for handler in handlers {
-            if handler.isTime(time: time) {
-                needsUpdate = true
-                
-                group.enter()
-                queue.sync {
-                    handler.handle(obj: self)
-                    group.leave()
-                }
-            }
-        }
-        
-        group.notify(queue: .main) { [weak self] in
-            if needsUpdate {
-                guard let self = self else {
-                    return
-                }
-                self.delegate?.spaceObjectDidChange(newObj: self)
-            }
-        }
-        
-        guard let planetarySystems = planetarySystems else { return }
-        for system in planetarySystems {
-            (system as? PlanetarySystemModel)?.time = self.time
-        }
-    }
-}
-
+// MARK: - SpaceObjectDelegate
 extension GalaxyModel: SpaceObjectDelegate {
     // Planetary systems did change
     func spaceObjectDidChange(newObj: SpaceObject) {

@@ -48,6 +48,7 @@ protocol Star {
 
 class StarModel: Star {
     var time: Int = 0
+    
     var age: Int {
         get {
             self.time - (self.creationTime ?? 0)
@@ -72,6 +73,7 @@ class StarModel: Star {
     
     static func generate() -> StarModel {
         let hundredRange: ClosedRange<Double> = 1...100
+        
         return StarModel(
             radius: .random(in: hundredRange),
             luminosity: .random(in: hundredRange),

@@ -15,7 +15,6 @@ class StarEvolutionHandler: Handler {
             return
         }
         
-        
         if star.age > timeInterval {
             if let next = star.stage.currentState?.next {
                 if next is BlackHoleState {
@@ -25,7 +24,5 @@ class StarEvolutionHandler: Handler {
                 planetarySystem.star = star
             }
         }
-        
-        
     }
 }

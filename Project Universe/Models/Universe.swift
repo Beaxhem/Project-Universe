@@ -11,20 +11,28 @@ protocol Universe {
     var galaxies: [Galaxy] { get set }
 }
 
-class UniverseModel: SpaceObject, Universe {
+class UniverseModel: TimeHandled, Universe {
     
-    var time: Int = 0 {
-        didSet {
-            runHandlers()
+    // MARK: TimeHandled conformation
+    override var children: [TimeHandled]? {
+        get {
+            return galaxies as? [TimeHandled]
         }
+        set {}
     }
-    var galaxies: [Galaxy] = []
-    let handlers: [Handler] = [
-        GalaxyCreatorHandler(),
-        GalaxiesCollapseHandler()
-    ]
     
-    weak var delegate: SpaceObjectDelegate?
+    override var handlers: [Handler]? {
+        get {
+            [
+                GalaxyCreatorHandler(),
+                GalaxiesCollapseHandler()
+            ]
+        }
+        set {}
+    }
+    
+    // MARK: Universe conformation
+    var galaxies: [Galaxy] = []
     
     let nameGenerator = DefaultNameGenerator(with: "Galaxy")
     
@@ -33,46 +41,6 @@ class UniverseModel: SpaceObject, Universe {
         newGalaxy.name = nameGenerator.generate()
         newGalaxy.delegate = self
         galaxies.insert(newGalaxy, at: 0)
-    }
-}
-
-extension UniverseModel: Handled {
-    
-    func runHandlers() {
-        var needsUpdate = false
-        
-        let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
-            
-        let group = DispatchGroup()
-        
-        for handler in handlers {
-            if handler.isTime(time: time) {
-                needsUpdate = true
-                group.enter()
-                queue.sync {
-                    handler.handle(obj: self)
-                    group.leave()
-                }
-            }
-        }
-        
-        for galaxy in galaxies {
-            guard let galaxy = galaxy as? GalaxyModel else {
-                return
-            }
-            
-            galaxy.time = self.time
-        }
-        
-       
-        group.notify(queue: .main) { [weak self] in
-            if needsUpdate {
-                guard let self = self else { return }
-                
-                self.delegate?.spaceObjectDidChange(newObj: self)
-            }
-        }
-        
     }
 }
 
