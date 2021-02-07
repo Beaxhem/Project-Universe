@@ -14,12 +14,14 @@ protocol ImageProvider {
 class DefaultImageProvider: ImageProvider {
     var dict: [AnyHashable : String]?
     
+    static let defaultValue = "default"
+    
     init(dict: [AnyHashable: String]? = nil) {
         self.dict = dict
     }
     
     func name(for type: AnyHashable) -> UIImage? {
-        guard let dict = dict, let imageName = dict[type] ?? dict["default"]else {
+        guard let dict = dict, let imageName = dict[type] ?? dict[DefaultImageProvider.defaultValue] else {
             return nil
         }
         
@@ -32,14 +34,16 @@ extension DefaultImageProvider {
         GalaxyType.elliptical: "ellipticalGalaxy",
         GalaxyType.irregural: "irregularGalaxy",
         GalaxyType.spiral: "spiralGalaxy",
-        "default": "unknownGalaxyType"
+        DefaultImageProvider.defaultValue: "unknownGalaxyType"
     ]
     
     static let starImageDict: [AnyHashable: String] = [
-//        StarStage.oldStar: "oldStarImage",
-//        StarStage.youngStar: "youngStarImage",
-//        StarStage.dwarf: "dwarfStarImage",
+        /* TODO:
+         StarStage.oldStar: "oldStarImage",
+         StarStage.dwarf: "dwarfStarImage"
+        */
+        StarStage.youngStar: "youngStarImage",
         StarStage.blackHole: "blackHoleImage",
-        "default": "youngStarImage"
+        DefaultImageProvider.defaultValue: "youngStarImage"
     ]
 }

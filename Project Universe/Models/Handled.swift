@@ -9,21 +9,15 @@ import Foundation
 
 protocol Handled: SpaceObject {
     var handlers: [Handler]? { get set }
-    func runHandlers()
+    func runHandlers(currentTime: Int)
 }
 
 class TimeHandled: Handled, SpaceObject {
-    var time: Int = 0 {
-        didSet {
-            runHandlers()
-        }
-    }
-    
     var handlers: [Handler]? = nil
     weak var delegate: SpaceObjectDelegate?
     var children: [TimeHandled]? = nil
     
-    func runHandlers() {
+    func runHandlers(currentTime: Int) {
         var needsUpdate = false
         let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
         let group = DispatchGroup()
@@ -33,7 +27,7 @@ class TimeHandled: Handled, SpaceObject {
         }
         
         for handler in handlers {
-            if handler.isTime(time: time) {
+            if handler.isTime(time: currentTime) {
                 needsUpdate = true
                 
                 group.enter()
@@ -53,16 +47,16 @@ class TimeHandled: Handled, SpaceObject {
             }
         }
         
-        passCurrentTimeToChildren()
+        passCurrentTimeToChildren(time: currentTime)
     }
     
-    private func passCurrentTimeToChildren() {
+    private func passCurrentTimeToChildren(time: Int) {
         guard let children = children else {
             return
         }
         
         for child in children {
-            child.time = self.time
+            child.runHandlers(currentTime: time)
         }
     }
 }

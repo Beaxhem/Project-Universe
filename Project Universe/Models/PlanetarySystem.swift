@@ -20,19 +20,12 @@ class PlanetarySystemModel: TimeHandled, PlanetarySystem {
     // MARK: TimeHandled conformation
     override var handlers: [Handler]? {
         get {
-            [
+            return [
                 PlanetsCreatorHandler(),
                 StarEvolutionHandler()
             ]
         }
         set {}
-    }
-    
-    override var children: [TimeHandled]? {
-        get {
-            planets as? [TimeHandled]
-        }
-        set{}
     }
     
     // MARK: PlanetarySystem protocol conformation
@@ -56,8 +49,8 @@ class PlanetarySystemModel: TimeHandled, PlanetarySystem {
         return PlanetarySystemModel(star: StarModel.generate())
     }
     
-    // Overriding method from TimeHandled because of extra star property, which needs to be updated
-    override func runHandlers() {
+    // Overriding method from TimeHandled because of an extra .star property, which needs to be updated
+    override func runHandlers(currentTime: Int) {
         var needsUpdate = false
         let queue = DispatchQueue(label: "com.beaxhem.Project-Universe.universeHandlers", attributes: .concurrent)
         let group = DispatchGroup()
@@ -65,7 +58,7 @@ class PlanetarySystemModel: TimeHandled, PlanetarySystem {
         guard let handlers = handlers else { return }
         
         for handler in handlers {
-            if handler.isTime(time: time) {
+            if handler.isTime(time: currentTime) {
                 needsUpdate = true
                 
                 group.enter()
@@ -76,7 +69,7 @@ class PlanetarySystemModel: TimeHandled, PlanetarySystem {
             }
         }
         
-        (star as? StarModel)?.time = time
+        (star as? StarModel)?.time = currentTime
         
         group.notify(queue: .main) { [weak self] in
             if needsUpdate {

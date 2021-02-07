@@ -43,7 +43,7 @@ class UniverseProvider {
     }
     
     private func runHandlers() {
-        (universe as? UniverseModel)?.time = runTime
+        (universe as? TimeHandled)?.runHandlers(currentTime: runTime)
     }
 }
 

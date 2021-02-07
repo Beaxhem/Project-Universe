@@ -42,17 +42,14 @@ class GalaxyModel: TimeHandled, Galaxy {
     }
     
     // MARK: Galaxy protocol conformation
-    
     var name: String = ""
     var type: GalaxyType
     var planetarySystems: [PlanetarySystem]?
     var age: Int {
         get {
-            self.time - (self.creationTime ?? 0)
+            UniverseProvider.shared.runTime - (self.creationTime ?? 0)
         }
-        set {
-            
-        }
+        set {}
     }
     
     var creationTime: Int?
