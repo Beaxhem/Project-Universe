@@ -7,22 +7,21 @@
 
 import UIKit
 
-class TimerBarButton: UIView {
-    static let shared = TimerBarButton(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
+protocol TimerBarButton {
+    func reload(time: Int)
+}
+
+class DefaultTimerBarButton: UIView, TimerBarButton {
+    lazy var timeProvider = UniverseProvider.shared
     
-    let timeProvider = UniverseProvider.shared
-    
-    var isSpeedUp: Bool = false {
-        didSet {
-            if isSpeedUp {
-                SettingsProvider.shared.timeAcceleration = 2
-            } else {
-                SettingsProvider.shared.timeAcceleration = 1
-            }
-            
-            configure()
-        }
-    }
+    let button: UIButton = {
+        let button = UIButton(frame: .zero)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(changeTimeSpeed), for: .touchUpInside)
+        
+        return button
+    }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
@@ -52,26 +51,31 @@ class TimerBarButton: UIView {
     }
     
     private func configure() {
+        addSubview(button)
         
-        addSubview(timeLabel)
+        button.addSubview(timeLabel)
+        
+        let isSpeedUp = SettingsProvider.shared.isSpeedUp
         
         timeLabel.backgroundColor = isSpeedUp ? .systemBlue : .clear
-        timeLabel.textColor = isSpeedUp ? .clear : .systemBlue
+        timeLabel.textColor = isSpeedUp ? .label : .systemBlue
         
         NSLayoutConstraint.activate([
-            timeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            timeLabel.topAnchor.constraint(equalTo: topAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor),
+            button.topAnchor.constraint(equalTo: topAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            timeLabel.leadingAnchor.constraint(equalTo: button.leadingAnchor),
+            timeLabel.topAnchor.constraint(equalTo: button.topAnchor),
+            timeLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor),
+            timeLabel.bottomAnchor.constraint(equalTo: button.bottomAnchor),
         ])
     }
     
     @objc func changeTimeSpeed() {
-        if SettingsProvider.shared.timeAcceleration == 1 {
-            SettingsProvider.shared.timeAcceleration = 2
-        } else {
-            SettingsProvider.shared.timeAcceleration = 1
-        }
+        SettingsProvider.shared.isSpeedUp.toggle()
+        configure()
     }
     
     func reload(time: Int) {

@@ -14,8 +14,19 @@ class SpaceObjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let timerButton = UIBarButtonItem(customView: TimerBarButton.shared)
+        guard let timerBarButton = UniverseProvider.shared.timerBarButton as? UIView else {
+            return
+        }
+        
+        let timerButton = UIBarButtonItem(customView: timerBarButton)
+        timerButton.action = #selector(test)
+        timerButton.target = self
+        
         navigationItem.rightBarButtonItem = timerButton
+    }
+    
+    @objc func test() {
+        print("test")
     }
 }
 

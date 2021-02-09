@@ -14,8 +14,13 @@ class SettingsProvider {
     static let shared = SettingsProvider()
     
     weak var delegate: SettingsProviderDelegate?
-        
-    var timeAcceleration: Int = 2 {
+    
+    var isSpeedUp: Bool = false {
+        didSet {
+            timeAcceleration = isSpeedUp ? 2 : 1
+        }
+    }
+    lazy var timeAcceleration: Int = 1 {
         didSet {
             delegate?.timeAccelerationChanged()
         }

@@ -10,6 +10,7 @@ import UIKit
 protocol TimeProvider {
     var handler: (() -> Void)? { get set }
     func start()
+    func updateTimeAcceleration()
 }
 
 class DefaultTimeProvider: TimeProvider {
@@ -30,5 +31,10 @@ class DefaultTimeProvider: TimeProvider {
     
     func start() {
         timer?.resume()
+    }
+    
+    func updateTimeAcceleration() {
+        let timeInterval = Double(1) / Double(SettingsProvider.shared.timeAcceleration)
+        timer?.schedule(deadline: .now(), repeating: timeInterval)
     }
 }
