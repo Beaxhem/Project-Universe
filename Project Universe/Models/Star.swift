@@ -37,18 +37,20 @@ enum StarStage: String {
     case blackHole = "Black hole"
 }
 
-protocol Star {
+protocol Star: PlanetarySystemLike {
     var mass: Double { get }
     var temperature: Double { get }
     var radius: Double { get }
     var luminosity: Double { get }
     
     var stage: StateMachine { get set }
+    
+    var isBlackHole: Bool { get }
 }
 
-class StarModel: Star {
+class StarModel: TimeHandled, Star, PlanetarySystemLike {
+
     var time: Int = 0
-    
     var age: Int {
         get {
             self.time - (self.creationTime ?? 0)
@@ -63,6 +65,10 @@ class StarModel: Star {
     var temperature: Double
     
     var stage: StateMachine = DefaultStateMachine(state: YoungStarState())
+    
+    var isBlackHole: Bool {
+        return stage.currentState?.value as? StarStage == .blackHole
+    }
     
     init(radius: Double, luminosity: Double, mass: Double, temperature: Double) {
         self.luminosity = luminosity

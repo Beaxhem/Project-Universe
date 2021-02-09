@@ -13,7 +13,7 @@ class PlanetsCreatorHandler: Handler {
             return
         }
         
-        if planetSystem.star.stage.currentState is BlackHoleState {
+        if let star = planetSystem.star, star.isBlackHole {
             planetSystem.planets = []
             return
         }
@@ -31,7 +31,5 @@ class PlanetsCreatorHandler: Handler {
         }
         
         planetSystem.planets = planets
-        
-//        print("New planet created")
     }
 }

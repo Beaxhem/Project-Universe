@@ -17,7 +17,7 @@ protocol Galaxy: SpaceObject {
     var name: String { get set }
     var type: GalaxyType { get }
     var age: Int { get }
-    var planetarySystems: [PlanetarySystem]? { get set }
+    var planetarySystems: [PlanetarySystemLike]? { get set }
     
     var mass: Double { get }
 }
@@ -35,7 +35,8 @@ class GalaxyModel: TimeHandled, Galaxy {
     override var handlers: [Handler]? {
         get {
             return [
-                PlanetarySystemCreatorHandler()
+                PlanetarySystemCreatorHandler(),
+                BlackHolesUpdaterHandler(),
             ]
         }
         set {}
@@ -44,7 +45,7 @@ class GalaxyModel: TimeHandled, Galaxy {
     // MARK: Galaxy protocol conformation
     var name: String = ""
     var type: GalaxyType
-    var planetarySystems: [PlanetarySystem]?
+    var planetarySystems: [PlanetarySystemLike]?
     var age: Int {
         get {
             UniverseProvider.shared.runTime - (self.creationTime ?? 0)
@@ -65,7 +66,9 @@ class GalaxyModel: TimeHandled, Galaxy {
         self.type = type
         self.creationTime = UniverseProvider.shared.runTime
     }
-    
+}
+
+extension GalaxyModel {
     func newPlanetarySystem() {
         let newPlanetSystem = PlanetarySystemModel.generate()
         newPlanetSystem.name = nameGenerator.generate()

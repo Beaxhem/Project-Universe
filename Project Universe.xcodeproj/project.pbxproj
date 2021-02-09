@@ -39,6 +39,7 @@
 		885A6C1025B1D4C400BEEFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885A6C0F25B1D4C400BEEFBF /* Assets.xcassets */; };
 		885A6C1325B1D4C400BEEFBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885A6C1125B1D4C400BEEFBF /* LaunchScreen.storyboard */; };
 		8890886525D0700A000F6993 /* SpaceObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8890886425D0700A000F6993 /* SpaceObjectViewController.swift */; };
+		88B6D32025D343030092D793 /* BlackHolesUpdaterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D31F25D343030092D793 /* BlackHolesUpdaterHandler.swift */; };
 		88C32CEE25B240DF00DD1AA5 /* Universe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CED25B240DF00DD1AA5 /* Universe.swift */; };
 		88C32CF125B243DD00DD1AA5 /* Galaxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF025B243DD00DD1AA5 /* Galaxy.swift */; };
 		88C32CF425B243E700DD1AA5 /* PlanetarySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C32CF325B243E700DD1AA5 /* PlanetarySystem.swift */; };
@@ -83,6 +84,7 @@
 		885A6C1225B1D4C400BEEFBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		885A6C1425B1D4C400BEEFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8890886425D0700A000F6993 /* SpaceObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceObjectViewController.swift; sourceTree = "<group>"; };
+		88B6D31F25D343030092D793 /* BlackHolesUpdaterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackHolesUpdaterHandler.swift; sourceTree = "<group>"; };
 		88C32CED25B240DF00DD1AA5 /* Universe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universe.swift; sourceTree = "<group>"; };
 		88C32CF025B243DD00DD1AA5 /* Galaxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Galaxy.swift; sourceTree = "<group>"; };
 		88C32CF325B243E700DD1AA5 /* PlanetarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetarySystem.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				8818AB0525C0D265003F3AED /* PlanetsCreatorHandler.swift */,
 				8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */,
 				88FA95C125C3E4A10049C854 /* StarEvolutionHandler.swift */,
+				88B6D31F25D343030092D793 /* BlackHolesUpdaterHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				88C32CF125B243DD00DD1AA5 /* Galaxy.swift in Sources */,
 				8831975625C047FD0042B3E6 /* Handled.swift in Sources */,
 				8818AB3625C137E1003F3AED /* Randomizable.swift in Sources */,
+				88B6D32025D343030092D793 /* BlackHolesUpdaterHandler.swift in Sources */,
 				8818AB0925C0D342003F3AED /* Satelite.swift in Sources */,
 				8812F03125C0A35500DDE6EA /* GalaxyCollectionHeaderView.swift in Sources */,
 				8818AB2025C0F257003F3AED /* SettingsProvider.swift in Sources */,

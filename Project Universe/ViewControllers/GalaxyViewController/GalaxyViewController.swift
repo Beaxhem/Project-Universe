@@ -87,7 +87,7 @@ extension GalaxyViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension GalaxyViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let planetarySystem = galaxy?.planetarySystems?[indexPath.item] else {
+        guard let planetarySystem = galaxy?.planetarySystems?[indexPath.item] as? PlanetarySystem else {
             return
         }
         

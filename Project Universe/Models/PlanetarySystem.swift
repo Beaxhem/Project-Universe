@@ -7,15 +7,17 @@
 
 import Foundation
 
-protocol PlanetarySystem {
-    var name: String { get set }
-    var star: Star { get }
-    var planets: [Planet]? { get set }
-    
+protocol PlanetarySystemLike {
     var mass: Double { get }
 }
 
-class PlanetarySystemModel: TimeHandled, PlanetarySystem {
+protocol PlanetarySystem: PlanetarySystemLike {
+    var name: String { get set }
+    var star: Star? { get set }
+    var planets: [Planet]? { get set }
+}
+
+class PlanetarySystemModel: TimeHandled, PlanetarySystem, PlanetarySystemLike {
     
     // MARK: TimeHandled conformation
     override var handlers: [Handler]? {
@@ -30,13 +32,17 @@ class PlanetarySystemModel: TimeHandled, PlanetarySystem {
     
     // MARK: PlanetarySystem protocol conformation
     var name: String = ""
-    var star: Star
+    var star: Star?
     var planets: [Planet]?
     
     var mass: Double {
-        star.mass + (planets?.reduce(0, { res, planet in
+        guard let star = star, let planets = planets else {
+             return 0
+        }
+        
+        return star.mass + planets.reduce(0, { res, planet in
             return res + planet.mass
-        }) ?? 0)
+        })
     }
     
     let nameGenerator = DefaultNameGenerator(with: "Planet")

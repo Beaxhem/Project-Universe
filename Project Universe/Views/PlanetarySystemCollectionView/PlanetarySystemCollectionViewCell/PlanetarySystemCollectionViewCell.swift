@@ -14,7 +14,7 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
     
     private let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.starImageDict)
     
-    var data: PlanetarySystem? {
+    var data: PlanetarySystemLike? {
         didSet {
             configure()
         }
@@ -37,20 +37,33 @@ class PlanetarySystemCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        guard let stage = data.star.stage.currentState?.value as? StarStage else {
-            return
+        if let star = data as? StarModel {
+            guard let stage = star.stage.currentState?.value as? StarStage else {
+                return
+            }
+            
+            let image = imageProvider.name(for: stage)
+            
+            imageView?.image = image
+            
+            titleLabel?.text = "Black hole"
+            descriptionLabel?.text = getDescription()
+        } else if let planetarySystem = data as? PlanetarySystem {
+            guard let stage = planetarySystem.star?.stage.currentState?.value as? StarStage else {
+                return
+            }
+            
+            let image = imageProvider.name(for: stage)
+            
+            imageView?.image = image
+            
+            titleLabel?.text = planetarySystem.name
+            descriptionLabel?.text = getDescription()
         }
-        
-        let image = imageProvider.name(for: stage)
-        
-        imageView?.image = image
-        
-        titleLabel?.text = data.name
-        descriptionLabel?.text = getDescription()
     }
     
     private func getDescription() -> String? {
-        guard let planetSystem = data else {
+        guard let planetSystem = data as? PlanetarySystem else {
             return nil
         }
         
