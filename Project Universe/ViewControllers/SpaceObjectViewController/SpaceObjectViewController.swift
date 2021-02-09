@@ -19,14 +19,8 @@ class SpaceObjectViewController: UIViewController {
         }
         
         let timerButton = UIBarButtonItem(customView: timerBarButton)
-        timerButton.action = #selector(test)
-        timerButton.target = self
         
         navigationItem.rightBarButtonItem = timerButton
-    }
-    
-    @objc func test() {
-        print("test")
     }
 }
 
