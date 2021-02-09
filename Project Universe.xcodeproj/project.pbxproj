@@ -25,6 +25,7 @@
 		8818AB2E25C110A3003F3AED /* GalaxiesCollapseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */; };
 		8818AB3225C11B82003F3AED /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3125C11B82003F3AED /* StateMachine.swift */; };
 		8818AB3625C137E1003F3AED /* Randomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818AB3525C137E1003F3AED /* Randomizable.swift */; };
+		88239B3125D34F7B00631A0C /* Aged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88239B3025D34F7B00631A0C /* Aged.swift */; };
 		8831974725C03C9E0042B3E6 /* GalaxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974625C03C9E0042B3E6 /* GalaxyViewController.swift */; };
 		8831974D25C03F250042B3E6 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974C25C03F250042B3E6 /* Handler.swift */; };
 		8831975025C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831974F25C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift */; };
@@ -68,6 +69,7 @@
 		8818AB2D25C110A3003F3AED /* GalaxiesCollapseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxiesCollapseHandler.swift; sourceTree = "<group>"; };
 		8818AB3125C11B82003F3AED /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		8818AB3525C137E1003F3AED /* Randomizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randomizable.swift; sourceTree = "<group>"; };
+		88239B3025D34F7B00631A0C /* Aged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aged.swift; sourceTree = "<group>"; };
 		8831974625C03C9E0042B3E6 /* GalaxyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaxyViewController.swift; sourceTree = "<group>"; };
 		8831974C25C03F250042B3E6 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		8831974F25C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetarySystemsCreatorHandler.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				8831975525C047FD0042B3E6 /* Handled.swift */,
 				8831975C25C085590042B3E6 /* SpaceObject.swift */,
 				8818AB3525C137E1003F3AED /* Randomizable.swift */,
+				88239B3025D34F7B00631A0C /* Aged.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				88C32CFA25B243FD00DD1AA5 /* Planet.swift in Sources */,
 				8818AB0E25C0F0A0003F3AED /* PlanetarySystemViewController.swift in Sources */,
 				8831974D25C03F250042B3E6 /* Handler.swift in Sources */,
+				88239B3125D34F7B00631A0C /* Aged.swift in Sources */,
 				88C32CEE25B240DF00DD1AA5 /* Universe.swift in Sources */,
 				8831975D25C085590042B3E6 /* SpaceObject.swift in Sources */,
 				8831975025C03F650042B3E6 /* PlanetarySystemsCreatorHandler.swift in Sources */,

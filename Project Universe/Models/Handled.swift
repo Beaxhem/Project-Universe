@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol Handled: SpaceObject {
+protocol Handled {
     var handlers: [Handler]? { get set }
     func runHandlers(currentTime: Int)
 }
 
-class TimeHandled: Handled, SpaceObject {
+class TimeHandled: DefaultAged, Handled, SpaceObject {
     var handlers: [Handler]? = nil
     weak var delegate: SpaceObjectDelegate?
     var children: [TimeHandled]? = nil

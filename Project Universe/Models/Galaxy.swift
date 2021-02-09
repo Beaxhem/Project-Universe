@@ -13,10 +13,9 @@ enum GalaxyType: Randomizable {
     case irregural
 }
 
-protocol Galaxy: SpaceObject {
+protocol Galaxy: Aged, SpaceObject {
     var name: String { get set }
     var type: GalaxyType { get }
-    var age: Int { get }
     var planetarySystems: [PlanetarySystemLike]? { get set }
     
     var mass: Double { get }
@@ -46,14 +45,7 @@ class GalaxyModel: TimeHandled, Galaxy {
     var name: String = ""
     var type: GalaxyType
     var planetarySystems: [PlanetarySystemLike]?
-    var age: Int {
-        get {
-            UniverseProvider.shared.runTime - (self.creationTime ?? 0)
-        }
-        set {}
-    }
     
-    var creationTime: Int?
     var mass: Double {
         planetarySystems?.reduce(Double(0), { res, ps in
             return res + ps.mass
@@ -64,7 +56,6 @@ class GalaxyModel: TimeHandled, Galaxy {
     
     init(type: GalaxyType) {
         self.type = type
-        self.creationTime = UniverseProvider.shared.runTime
     }
 }
 

@@ -37,7 +37,7 @@ enum StarStage: String {
     case blackHole = "Black hole"
 }
 
-protocol Star: PlanetarySystemLike {
+protocol Star: Aged, PlanetarySystemLike {
     var mass: Double { get }
     var temperature: Double { get }
     var radius: Double { get }
@@ -49,16 +49,8 @@ protocol Star: PlanetarySystemLike {
 }
 
 class StarModel: TimeHandled, Star, PlanetarySystemLike {
-
     var time: Int = 0
-    var age: Int {
-        get {
-            self.time - (self.creationTime ?? 0)
-        }
-        set { }
-    }
-    var creationTime: Int?
-    
+
     var radius: Double
     var luminosity: Double
     var mass: Double
