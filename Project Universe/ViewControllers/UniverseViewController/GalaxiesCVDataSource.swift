@@ -7,7 +7,11 @@
 
 import UIKit
 
-class GalaxiesCVDataSource: NSObject, UICollectionViewDataSource {
+protocol GalaxiesCVDataSource: UICollectionViewDataSource {
+    var universe: Universe { get set}
+}
+
+class DefaultGalaxiesCVDataSource: NSObject, GalaxiesCVDataSource {
     var universe: Universe
     
     init(universe: Universe) {

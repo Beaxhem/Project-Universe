@@ -9,15 +9,14 @@ import UIKit
 
 class PlanetarySystemsCVDelegate: SpaceObjectCVDelegateFlowLayout {
     var presenter: UINavigationController?
-    var galaxy: Galaxy?
+    weak var planetarySystemsDataSource: PlanetarySystemsCVDataSource?
     
-    init(presenter: UINavigationController? = nil, galaxy: Galaxy?) {
+    init(presenter: UINavigationController? = nil) {
         self.presenter = presenter
-        self.galaxy = galaxy
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let planetarySystem = galaxy?.planetarySystems?[indexPath.item] as? PlanetarySystem else {
+        guard let delegate = planetarySystemsDataSource, let planetarySystem = delegate.galaxy?.planetarySystems?[indexPath.item] as? PlanetarySystem else {
             return
         }
         

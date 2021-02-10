@@ -12,9 +12,8 @@ class UniverseViewController: SpaceObjectViewController {
     @IBOutlet weak var galaxiesCollectionView: UICollectionView?
     
     private lazy var galaxiesCollectionViewDelegate = GalaxiesCVDelegate(
-        presenter: navigationController,
-        universe: universe)
-    private lazy var galaxiesCollectionViewDataSource = GalaxiesCVDataSource(universe: universe)
+        presenter: navigationController)
+    private lazy var galaxiesCollectionViewDataSource = DefaultGalaxiesCVDataSource(universe: universe)
     
     private var universe = UniverseProvider.shared.universe
     
@@ -37,6 +36,8 @@ class UniverseViewController: SpaceObjectViewController {
         
         galaxiesCollectionView.dataSource = galaxiesCollectionViewDataSource
         galaxiesCollectionView.delegate = galaxiesCollectionViewDelegate
+        galaxiesCollectionViewDelegate.galaxiesDataSource = galaxiesCollectionViewDataSource
+        
         galaxiesCollectionView.register(UINib(nibName: "\(GalaxyCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(GalaxyCollectionViewCell.self)")
     }
 }

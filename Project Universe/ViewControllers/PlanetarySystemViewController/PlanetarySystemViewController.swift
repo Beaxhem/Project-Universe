@@ -12,7 +12,7 @@ class PlanetarySystemViewController: SpaceObjectViewController {
     @IBOutlet weak var planetsCollectionView: UICollectionView?
 
     private let planetsCollectionViewDelegate = PlanetsCVDelegate()
-    private lazy var planetsCollectionViewDataSource = PlanetsCVDataSource(planetarySystem: planetarySystem)
+    private lazy var planetsCollectionViewDataSource: PlanetsCVDataSource = DefaultPlanetsCVDataSource(planetarySystem: planetarySystem)
     
     var planetarySystem: PlanetarySystem?
     

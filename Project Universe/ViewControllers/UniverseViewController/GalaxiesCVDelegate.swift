@@ -9,11 +9,10 @@ import UIKit
 
 class GalaxiesCVDelegate: SpaceObjectCVDelegateFlowLayout {
     var presenter: UINavigationController?
-    var universe: Universe
+    weak var galaxiesDataSource: GalaxiesCVDataSource?
     
-    init(presenter: UINavigationController? = nil, universe: Universe) {
+    init(presenter: UINavigationController? = nil) {
         self.presenter = presenter
-        self.universe = universe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -23,7 +22,10 @@ class GalaxiesCVDelegate: SpaceObjectCVDelegateFlowLayout {
             return
         }
         
-        let galaxy = universe.galaxies[indexPath.item] as! GalaxyModel
+        guard let galaxyDataSource = galaxiesDataSource, let galaxy = galaxyDataSource.universe.galaxies[indexPath.item] as? GalaxyModel else {
+            return
+        }
+        
         vc.galaxy = galaxy
         
         presenter?.pushViewController(vc, animated: true)

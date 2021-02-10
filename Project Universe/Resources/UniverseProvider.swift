@@ -19,9 +19,9 @@ class UniverseProvider {
     
     private var timer: TimeProvider = DefaultTimeProvider()
     
-    private var timerBarButton: TimerBarButton = DefaultTimerBarButton(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
+    var timerBarButton: TimerBarButton = DefaultTimerBarButton(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
     
-    private var runTime = 0 {
+    var runTime = 0 {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.timerBarButton.reload(time: self?.runTime ?? 0)

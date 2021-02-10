@@ -7,7 +7,11 @@
 
 import UIKit
 
-class PlanetarySystemsCVDataSource {
+protocol PlanetarySystemsCVDataSource: UICollectionViewDataSource {
+    var galaxy: Galaxy? { get set }
+}
+
+class DefaultPlanetarySystemsCVDataSource: NSObject, PlanetarySystemsCVDataSource {
     var galaxy: Galaxy?
     
     init(galaxy: Galaxy?) {
