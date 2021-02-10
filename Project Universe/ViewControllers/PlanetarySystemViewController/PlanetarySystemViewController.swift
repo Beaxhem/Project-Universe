@@ -11,6 +11,9 @@ class PlanetarySystemViewController: SpaceObjectViewController {
     
     @IBOutlet weak var planetsCollectionView: UICollectionView?
 
+    let planetsCollectionViewDelegate = PlanetsCVDelegate()
+    lazy var planetsCollectionViewDataSource = PlanetsCVDataSource(planetarySystem: planetarySystem)
+    
     var planetarySystem: PlanetarySystem?
     
     override func viewDidLoad() {
@@ -23,8 +26,8 @@ class PlanetarySystemViewController: SpaceObjectViewController {
     
     private func setupCollectionView() {
         guard let planetsCollectionView = planetsCollectionView else { return }
-        planetsCollectionView.delegate = self
-        planetsCollectionView.dataSource = self
+        planetsCollectionView.delegate = planetsCollectionViewDelegate
+        planetsCollectionView.dataSource = planetsCollectionViewDataSource
         planetsCollectionView.register(UINib(nibName: "\(PlanetCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(PlanetCollectionViewCell.self)")
     }
 }

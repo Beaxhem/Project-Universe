@@ -11,6 +11,9 @@ class GalaxyViewController: SpaceObjectViewController {
     
     @IBOutlet weak var planetarySystemsCollectionView: UICollectionView?
     
+    lazy var planetarySystemsCollectionViewDelegate = PlanetarySystemsCVDelegate(presenter: navigationController, galaxy: galaxy)
+    lazy var planetarySystemsCollectionViewDataSource = PlanetarySystemsCVDataSource(galaxy: galaxy)
+    
     var imageProvider: ImageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
     
     var galaxy: Galaxy?
@@ -34,7 +37,7 @@ class GalaxyViewController: SpaceObjectViewController {
     private func setupCollectionView() {
         guard let planetaryCollectionView = planetarySystemsCollectionView else { return }
         
-        planetaryCollectionView.delegate = self
+        planetaryCollectionView.delegate = planetarySystemsCollectionViewDelegate
         planetaryCollectionView.dataSource = self
         
         let cellID = "\(PlanetarySystemCollectionViewCell.self)"
@@ -81,22 +84,5 @@ extension GalaxyViewController: UICollectionViewDataSource {
         }
 
         return UICollectionReusableView()
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-extension GalaxyViewController {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let planetarySystem = galaxy?.planetarySystems?[indexPath.item] as? PlanetarySystem else {
-            return
-        }
-        
-        guard let vc = storyboard?.instantiateViewController(identifier: "\(PlanetarySystemViewController.self)") as? PlanetarySystemViewController else {
-            return
-        }
-        
-        vc.planetarySystem = planetarySystem
-        
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
