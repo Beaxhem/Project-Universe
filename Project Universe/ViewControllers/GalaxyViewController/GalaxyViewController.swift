@@ -11,10 +11,10 @@ class GalaxyViewController: SpaceObjectViewController {
     
     @IBOutlet weak var planetarySystemsCollectionView: UICollectionView?
     
-    lazy var planetarySystemsCollectionViewDelegate = PlanetarySystemsCVDelegate(presenter: navigationController, galaxy: galaxy)
-    lazy var planetarySystemsCollectionViewDataSource = PlanetarySystemsCVDataSource(galaxy: galaxy)
+    private lazy var planetarySystemsCollectionViewDelegate = PlanetarySystemsCVDelegate(presenter: navigationController, galaxy: galaxy)
+    private lazy var planetarySystemsCollectionViewDataSource = PlanetarySystemsCVDataSource(galaxy: galaxy)
     
-    var imageProvider: ImageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
+    private var imageProvider: ImageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
     
     var galaxy: Galaxy?
     
@@ -48,7 +48,7 @@ class GalaxyViewController: SpaceObjectViewController {
 }
 
 extension GalaxyViewController {
-    func universeUpdate() {
+    private func universeUpdate() {
         let range = Range(uncheckedBounds: (0, planetarySystemsCollectionView?.numberOfSections ?? 0))
         let indexSet = IndexSet(integersIn: range)
         planetarySystemsCollectionView?.reloadSections(indexSet)

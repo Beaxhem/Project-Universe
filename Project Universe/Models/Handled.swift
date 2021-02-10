@@ -13,6 +13,7 @@ protocol Handled {
 }
 
 class TimeHandled: DefaultAged, Handled, SpaceObject {
+    
     var handlers: [Handler]? = nil
     weak var delegate: SpaceObjectDelegate?
     var children: [TimeHandled]? = nil

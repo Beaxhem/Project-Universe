@@ -11,12 +11,12 @@ class UniverseViewController: SpaceObjectViewController {
 
     @IBOutlet weak var galaxiesCollectionView: UICollectionView?
     
-    lazy var galaxiesCollectionViewDelegate = GalaxiesCVDelegate(
+    private lazy var galaxiesCollectionViewDelegate = GalaxiesCVDelegate(
         presenter: navigationController,
         universe: universe)
-    lazy var galaxiesCollectionViewDataSource = GalaxiesCVDataSource(universe: universe)
+    private lazy var galaxiesCollectionViewDataSource = GalaxiesCVDataSource(universe: universe)
     
-    var universe = UniverseProvider.shared.universe
+    private var universe = UniverseProvider.shared.universe
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class UniverseViewController: SpaceObjectViewController {
 }
 
 extension UniverseViewController {
-    func galaxiesDidChange() {
+    private func galaxiesDidChange() {
         let range = Range(uncheckedBounds: (0, galaxiesCollectionView?.numberOfSections ?? 0))
         let indexSet = IndexSet(integersIn: range)
         galaxiesCollectionView?.reloadSections(indexSet)

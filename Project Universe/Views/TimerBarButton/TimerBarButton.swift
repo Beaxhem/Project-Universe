@@ -12,9 +12,9 @@ protocol TimerBarButton {
 }
 
 class DefaultTimerBarButton: UIView, TimerBarButton {
-    lazy var timeProvider = UniverseProvider.shared
+    private lazy var timeProvider = UniverseProvider.shared
     
-    let button: UIButton = {
+    private let button: UIButton = {
         let button = UIButton(frame: .zero)
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class DefaultTimerBarButton: UIView, TimerBarButton {
         return button
     }()
     
-    let timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         
         label.frame = CGRect(x: 0, y: 0, width: 80, height: 34)

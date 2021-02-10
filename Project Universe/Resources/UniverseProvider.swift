@@ -15,13 +15,13 @@ class UniverseProvider {
     
     var galaxiesDidChange: (() -> Void)?
     
-    var settingsProvider = SettingsProvider.shared
+    private var settingsProvider = SettingsProvider.shared
     
-    var timer: TimeProvider = DefaultTimeProvider()
+    private var timer: TimeProvider = DefaultTimeProvider()
     
-    var timerBarButton: TimerBarButton = DefaultTimerBarButton(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
+    private var timerBarButton: TimerBarButton = DefaultTimerBarButton(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
     
-    var runTime = 0 {
+    private var runTime = 0 {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.timerBarButton.reload(time: self?.runTime ?? 0)

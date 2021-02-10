@@ -10,7 +10,7 @@ protocol NameGenerator {
 }
 
 class DefaultNameGenerator: NameGenerator {
-    var id: Int = 1
+    private var id: Int = 1
     
     let prefix: String
     

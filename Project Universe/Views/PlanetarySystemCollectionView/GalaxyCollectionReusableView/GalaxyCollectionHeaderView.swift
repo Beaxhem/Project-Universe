@@ -14,7 +14,7 @@ class GalaxyCollectionHeaderView: UICollectionReusableView {
         }
     }
     
-    let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
+    private let imageProvider = DefaultImageProvider(dict: DefaultImageProvider.galaxyImageDict)
     
     @IBOutlet weak var galaxyImage: UIImageView?
     @IBOutlet weak var titleLabel: UILabel?
